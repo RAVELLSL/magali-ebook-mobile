@@ -52,7 +52,7 @@
         .menu-toggle {
             font-size: 18px;
             padding: 10px;
-            background-color: #00796b;
+            background: linear-gradient(to right, #00796b, #004d40);
             color: white;
             border: none;
             border-radius: 5px;
@@ -61,7 +61,7 @@
         }
 
         .menu-toggle:hover {
-            background-color: #004d40;
+            background: linear-gradient(to right, #004d40, #00796b);
         }
 
         .corpo {
@@ -72,6 +72,7 @@
             padding-bottom: 20px;
             flex-direction: column;
             overflow-y: auto; /* Adiciona barra de rolagem */
+            padding: 10px; /* Ajusta o padding para melhor visibilidade */
         }
 
         .coluna1 {
@@ -105,7 +106,7 @@
 
         .coluna2 {
             border: 1px solid #4682B4;
-            padding: 15px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             background-color: #ffffff;
@@ -538,150 +539,150 @@
         
     </div>
 
-   <!-- Modal -->
-   <div id="myModal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="img01">
-    <div id="caption"></div>
-</div>
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
 
-<script>
-    function showContent(contentId) {
-        const contents = document.querySelectorAll('.content');
-        contents.forEach(content => {
-            if (content.id === contentId) {
-                content.classList.remove('hidden');
-            } else {
-                content.classList.add('hidden');
-            }
-        });
-        // Recolher o menu automaticamente
-        const menu = document.querySelector('.coluna1');
-        menu.classList.remove('open');
-
-        // Garantir que o usuário possa deslizar o dedo para cima para visualizar o conteúdo
-        const mainContent = document.querySelector('.coluna2');
-        mainContent.scrollTop = 0; // Reiniciar a posição de rolagem para o topo
-    }
-
-    function toggleMenu() {
-        const menu = document.querySelector('.coluna1');
-        if (menu.classList.contains('open')) {
+    <script>
+        function showContent(contentId) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                if (content.id === contentId) {
+                    content.classList.remove('hidden');
+                } else {
+                    content.classList.add('hidden');
+                }
+            });
+            // Recolher o menu automaticamente
+            const menu = document.querySelector('.coluna1');
             menu.classList.remove('open');
-        } else {
-            menu.classList.add('open');
-        }
-    }
 
-    function hideMenu(event) {
-        const menu = document.querySelector('.coluna1');
-        if (menu.classList.contains('open') && !menu.contains(event.target) && !event.target.classList.contains('menu-toggle')) {
-            menu.classList.remove('open');
-        }
-    }
-
-    document.querySelectorAll('.coluna2 img').forEach(img => {
-        img.addEventListener('click', function() {
-            openModal(this);
-        });
-    });
-
-    const modal = document.getElementById('myModal');
-    const modalImg = document.getElementById('img01');
-    const captionText = document.getElementById('caption');
-    const closeModal = document.getElementsByClassName('close')[0];
-
-    function openModal(img) {
-        modal.style.display = 'block';
-        modalImg.src = img.src;
-        captionText.innerHTML = img.alt;
-
-        if (img.width > img.height) {
-            modalImg.classList.add('horizontal');
-            modalImg.classList.remove('vertical');
-        } else {
-            modalImg.classList.add('vertical');
-            modalImg.classList.remove('horizontal');
-        }
-    }
-
-    closeModal.onclick = function() {
-        modal.style.display = 'none';
-    }
-
-    // Script para a galeria de fotos
-    let currentIndex = 0;
-    const images = document.querySelectorAll('.galeria-imagem');
-
-    document.querySelector('.galeria-container').addEventListener('touchstart', handleTouchStart, false);
-    document.querySelector('.galeria-container').addEventListener('touchmove', handleTouchMove, false);
-
-    let xDown = null;
-    let yDown = null;
-
-    function handleTouchStart(evt) {
-        const firstTouch = (evt.touches || evt.originalEvent.touches)[0];
-        xDown = firstTouch.clientX;
-        yDown = firstTouch.clientY;
-    }
-
-    function handleTouchMove(evt) {
-        if (!xDown || !yDown) {
-            return;
-        }
-
-        let xUp = evt.touches[0].clientX;
-        let yUp = evt.touches[0].clientY;
-
-        let xDiff = xDown - xUp;
-        let yDiff = yDown - yUp;
-
-        if (Math.abs(xDiff) > Math.abs(yDiff)) {
-            // Detectar movimento horizontal
-            if (xDiff > 0) {
-                showNextImage();
-            } else {
-                showPrevImage();
-            }
-        } else {
-            // Detectar movimento vertical
+            // Garantir que o usuário possa deslizar o dedo para cima para visualizar o conteúdo
             const mainContent = document.querySelector('.coluna2');
-            if (yDiff > 0) {
-                mainContent.scrollTop += 50; // Deslizar para baixo
+            mainContent.scrollTop = 0; // Reiniciar a posição de rolagem para o topo
+        }
+
+        function toggleMenu() {
+            const menu = document.querySelector('.coluna1');
+            if (menu.classList.contains('open')) {
+                menu.classList.remove('open');
             } else {
-                mainContent.scrollTop -= 50; // Deslizar para cima
+                menu.classList.add('open');
             }
         }
 
-        xDown = null;
-        yDown = null;
-    }
+        function hideMenu(event) {
+            const menu = document.querySelector('.coluna1');
+            if (menu.classList.contains('open') && !menu.contains(event.target) && !event.target.classList.contains('menu-toggle')) {
+                menu.classList.remove('open');
+            }
+        }
 
-    function showNextImage() {
-        images[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % images.length;
-        images[currentIndex].classList.add('active');
-    }
-
-    function showPrevImage() {
-        images[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        images[currentIndex].classList.add('active');
-    }
-
-    // Adiciona evento de clique no menu para recolher e mostrar o conteúdo
-    document.querySelectorAll('.coluna1 nav ul li a').forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            showContent(this.getAttribute('data-content'));
-            toggleMenu(); // Recolher o menu após selecionar uma opção
+        document.querySelectorAll('.coluna2 img').forEach(img => {
+            img.addEventListener('click', function() {
+                openModal(this);
+            });
         });
-    });
 
-    // Adiciona evento de clique no documento para ocultar o menu
-    document.addEventListener('click', function(event) {
-        hideMenu(event);
-    });
-</script>
+        const modal = document.getElementById('myModal');
+        const modalImg = document.getElementById('img01');
+        const captionText = document.getElementById('caption');
+        const closeModal = document.getElementsByClassName('close')[0];
+
+        function openModal(img) {
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+            captionText.innerHTML = img.alt;
+
+            if (img.width > img.height) {
+                modalImg.classList.add('horizontal');
+                modalImg.classList.remove('vertical');
+            } else {
+                modalImg.classList.add('vertical');
+                modalImg.classList.remove('horizontal');
+            }
+        }
+
+        closeModal.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        // Script para a galeria de fotos
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.galeria-imagem');
+
+        document.querySelector('.galeria-container').addEventListener('touchstart', handleTouchStart, false);
+        document.querySelector('.galeria-container').addEventListener('touchmove', handleTouchMove, false);
+
+        let xDown = null;
+        let yDown = null;
+
+        function handleTouchStart(evt) {
+            const firstTouch = (evt.touches || evt.originalEvent.touches)[0];
+            xDown = firstTouch.clientX;
+            yDown = firstTouch.clientY;
+        }
+
+        function handleTouchMove(evt) {
+            if (!xDown || !yDown) {
+                return;
+            }
+
+            let xUp = evt.touches[0].clientX;
+            let yUp = evt.touches[0].clientY;
+
+            let xDiff = xDown - xUp;
+            let yDiff = yDown - yUp;
+
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                // Detectar movimento horizontal
+                if (xDiff > 0) {
+                    showNextImage();
+                } else {
+                    showPrevImage();
+                }
+            } else {
+                // Detectar movimento vertical
+                const mainContent = document.querySelector('.coluna2');
+                if (yDiff > 0) {
+                    mainContent.scrollTop += 50; // Deslizar para baixo
+                } else {
+                    mainContent.scrollTop -= 50; // Deslizar para cima
+                }
+            }
+
+            xDown = null;
+            yDown = null;
+        }
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        function showPrevImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        // Adiciona evento de clique no menu para recolher e mostrar o conteúdo
+        document.querySelectorAll('.coluna1 nav ul li a').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                showContent(this.getAttribute('data-content'));
+                toggleMenu(); // Recolher o menu após selecionar uma opção
+            });
+        });
+
+        // Adiciona evento de clique no documento para ocultar o menu
+        document.addEventListener('click', function(event) {
+            hideMenu(event);
+        });
+    </script>
 </body>
 </html>
