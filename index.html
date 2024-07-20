@@ -57,6 +57,7 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             flex-shrink: 0;
+            position: relative;
         }
 
         .cabecalho h1 {
@@ -351,7 +352,7 @@
             <h1>Memórias Vívidas</h1>
             <h2>Magali Borges da Fonseca</h2>
         </header>
-        <main class="corpo">
+        <main class="corpo" onclick="hideMenu(event)">
             <aside class="coluna1">
                 <nav>
                     <ul>
@@ -627,6 +628,13 @@
             }
         }
 
+        function hideMenu(event) {
+            const menu = document.querySelector('.coluna1');
+            if (menu.classList.contains('open') && !menu.contains(event.target)) {
+                menu.classList.remove('open');
+            }
+        }
+
         document.querySelectorAll('.coluna2 img').forEach(img => {
             img.addEventListener('click', function() {
                 openModal(this);
@@ -723,6 +731,11 @@
                 showContent(this.getAttribute('data-content'));
                 toggleMenu(); // Recolher o menu após selecionar uma opção
             });
+        });
+
+        // Adiciona evento de clique no documento para ocultar o menu
+        document.addEventListener('click', function(event) {
+            hideMenu(event);
         });
     </script>
 </body>
