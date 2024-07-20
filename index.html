@@ -126,6 +126,7 @@
         }
 
         .coluna1.open {
+            display: block;
             transform: translateX(0);
         }
 
@@ -177,6 +178,7 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             flex-shrink: 0;
+            position: relative;
         }
 
         .hidden {
@@ -353,7 +355,6 @@
             <aside class="coluna1">
                 <nav>
                     <ul>
-                        <li><a href="#" data-content="capa">MEMÓRIAS VÍVIDAS</a></li>
                         <li><a href="#" data-content="agradecimentos">Agradecimentos</a></li>
                         <li><a href="#" data-content="biografia">Biografia</a></li>
                         <li><a href="#" data-content="infancia-feliz">Fragmentos de uma Infância Feliz</a></li>
@@ -720,6 +721,7 @@
             link.addEventListener('click', function(event) {
                 event.preventDefault();
                 showContent(this.getAttribute('data-content'));
+                toggleMenu(); // Recolher o menu após selecionar uma opção
             });
         });
     </script>
