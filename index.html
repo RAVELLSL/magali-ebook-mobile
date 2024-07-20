@@ -32,20 +32,21 @@
             font-size: 18px;
             color: #333;
             height: 100vh;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
 
         .container {
             display: flex;
             flex-direction: column;
             height: 100%;
+            border: 1px solid #4682B4;
             background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             margin: 20px;
-            overflow-y: auto;
+            overflow: hidden;
         }
 
         .cabecalho {
@@ -75,55 +76,70 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        .corpo {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            flex: 1;
-        }
-
-        .coluna1 {
-            display: none;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .coluna1 nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .coluna1 nav ul li {
-            text-align: center;
+        .menu-toggle {
+            font-size: 18px;
+            padding: 10px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             margin-bottom: 10px;
         }
 
-        .coluna1 nav ul li a {
-            text-decoration: none;
-            color: #00796b;
-            font-weight: bold;
-            display: block;
-            padding: 8px;
-            border-radius: 5px;
-            background-color: #eceff1;
-            transition: background-color 0.3s ease;
-            font-size: 18px;
+        .menu-toggle:hover {
+            background-color: #004d40;
         }
 
-        .coluna1 nav ul li a:hover {
-            background-color: #b2dfdb;
+        .corpo {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            flex-direction: column;
+            overflow-y: auto; /* Adiciona barra de rolagem */
+        }
+
+        .coluna1 {
+            border: 1px solid #4682B4;
+            padding: 15px;
+            overflow-y: auto;
+            display: none; /* Esconder a coluna1 para mobile */
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            max-width: 250px;
+            margin-right: 15px;
+            font-size: 18px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            z-index: 1001;
+            background-color: rgba(255, 255, 255, 0.95);
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            transform: translateX(-100%);
+        }
+
+        .coluna1.open {
+            transform: translateX(0);
         }
 
         .coluna2 {
+            border: 1px solid #4682B4;
             padding: 15px;
+            display: flex;
+            flex-direction: column;
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 4;
             font-size: 20px;
+            overflow-y: auto; /* Adiciona barra de rolagem */
         }
 
         .coluna2 h1, .coluna2 h2 {
@@ -143,42 +159,12 @@
         }
 
         .coluna2 img {
-            width: 100%;
+            max-width: 100%; /* Ajusta as imagens ao conteúdo */
             height: auto;
             display: block;
             margin-left: auto;
             margin-right: auto;
             cursor: pointer;
-            border-radius: 8px;
-            border: 2px solid #4682B4;
-            margin-bottom: 20px;
-        }
-
-        .galeria-container {
-            position: relative;
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .galeria-imagem {
-            display: none;
-            width: 100%;
-            height: auto;
-        }
-
-        .galeria-imagem img {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: contain;
-            cursor: pointer;
-        }
-
-        .galeria-imagem.active {
-            display: block;
         }
 
         .rodape {
@@ -197,47 +183,91 @@
             display: none;
         }
 
-        .menu-toggle {
-            display: block;
-            background-color: #00796b;
-            color: #fff;
+        .coluna1 nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .coluna1 nav ul li {
             text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .coluna1 nav ul li a {
+            text-decoration: none;
+            color: #00796b;
+            font-weight: bold;
+            display: block;
             padding: 10px;
             border-radius: 5px;
-            margin-bottom: 15px;
+            background-color: #eceff1;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 18px;
+        }
+
+        .coluna1 nav ul li a:hover {
+            background-color: #b2dfdb;
+            transform: scale(1.05);
+        }
+
+        .galeria-container {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .galeria-imagem {
+            display: none;
+            width: 100%;
+            height: auto;
+        }
+
+        .galeria-imagem img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
             cursor: pointer;
         }
 
+        .galeria-imagem p {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .galeria-imagem.active {
+            display: block;
+        }
+
         @media screen and (max-width: 600px) {
-            .corpo {
-                padding: 10px;
+            .cabecalho h1 {
+                font-size: 36px;
+            }
+
+            .cabecalho h2 {
+                font-size: 20px;
             }
 
             .coluna1 {
-                display: block;
-                margin-bottom: 15px;
+                display: none; /* Esconde a coluna1 por padrão no mobile */
             }
 
-            .coluna1 nav ul li a {
+            .coluna2 {
                 padding: 10px;
                 font-size: 18px;
             }
 
             .coluna2 p {
-                font-size: 20px;
-            }
-
-            .cabecalho, .rodape {
-                margin: 10px;
-                padding: 12px;
-                font-size: 20px;
-            }
-
-            .menu-toggle {
-                display: block;
+                font-size: 18px;
+                text-indent: 1cm;
             }
         }
 
+        /* Estilos do modal */
         .modal {
             display: none;
             position: fixed;
@@ -315,36 +345,35 @@
 <body>
     <div class="container">
         <header class="cabecalho">
+            <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
             <h1>Memórias Vívidas</h1>
             <h2>Magali Borges da Fonseca</h2>
         </header>
-        <div class="menu-toggle" onclick="toggleMenu()">Menu</div>
-        <aside class="coluna1">
-            <nav>
-                <ul>
-                    <li><a href="#" onclick="showContent('capa')">MEMÓRIAS VÍVIDAS</a></li>
-                    <li><a href="#" onclick="showContent('agradecimentos')">Agradecimentos</a></li>
-                    <li><a href="#" onclick="showContent('biografia')">Biografia</a></li>
-                    <li><a href="#" onclick="showContent('infancia-feliz')">Fragmentos de uma Infância Feliz</a></li>
-                    <li><a href="#" onclick="showContent('severino-fonseca')">Severino Fonseca<br>"O Cara"</a></li>
-                    <li><a href="#" onclick="showContent('tempo-amizade')">O Tempo e a Amizade</a></li>
-                    <li><a href="#" onclick="showContent('tempo-parou-praia-jacare')">E o Tempo Parou na Praia do Jacaré</a></li>
-                    <li><a href="#" onclick="showContent('virtuose-serra')">Virtuose na Serra</a></li>
-                    <li><a href="#" onclick="showContent('hoje-06-agosto')">Hoje, 06 de Agosto</a></li>
-                    <li><a href="#" onclick="showContent('espirito-natalino')">O Espírito Natalino Ainda Vive</a></li>
-                    <li><a href="#" onclick="showContent('dia-eleicao')">Dia de Eleição...</a></li>
-                    <li><a href="#" onclick="showContent('novo-coronavirus')">O Novo Coronavírus</a></li>
-                    <li><a href="#" onclick="showContent('fragmentos-infancia-feliz-80')">Fragmentos de Uma Infância Feliz<br>(revisitado aos 80 anos)</a></li>
-                    <li><a href="#" onclick="showContent('anexos')">Anexos</a></li>
-                    <li><a href="#" onclick="showContent('galeria-fotos')">Galeria de Fotos</a></li>
-                </ul>
-            </nav>
-        </aside>
         <main class="corpo">
-            <section class="coluna2" id="conteudo">
+            <aside class="coluna1">
+                <nav>
+                    <ul>
+                        <li><a href="#" data-content="capa">MEMÓRIAS VÍVIDAS</a></li>
+                        <li><a href="#" data-content="agradecimentos">Agradecimentos</a></li>
+                        <li><a href="#" data-content="biografia">Biografia</a></li>
+                        <li><a href="#" data-content="infancia-feliz">Fragmentos de uma Infância Feliz</a></li>
+                        <li><a href="#" data-content="severino-fonseca">Severino Fonseca<br>"O Cara"</a></li>
+                        <li><a href="#" data-content="tempo-amizade">O Tempo e a Amizade</a></li>
+                        <li><a href="#" data-content="tempo-parou-praia-jacare">E o Tempo Parou na Praia do Jacaré</a></li>
+                        <li><a href="#" data-content="virtuose-serra">Virtuose na Serra</a></li>
+                        <li><a href="#" data-content="hoje-06-agosto">Hoje, 06 de Agosto</a></li>
+                        <li><a href="#" data-content="espirito-natalino">O Espírito Natalino Ainda Vive</a></li>
+                        <li><a href="#" data-content="dia-eleicao">Dia de Eleição...</a></li>
+                        <li><a href="#" data-content="novo-coronavirus">O Novo Coronavírus</a></li>
+                        <li><a href="#" data-content="fragmentos-infancia-feliz-80">Fragmentos de Uma Infância Feliz<br>(revisitado aos 80 anos)</a></li>
+                        <li><a href="#" data-content="anexos">Anexos</a></li>
+                        <li><a href="#" data-content="galeria-fotos">Galeria de Fotos</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <section class="coluna2">
                 <div id="capa" class="content">
-                    <h1>MEMÓRIAS VÍVIDAS</h1>
-                    <img src="https://media.licdn.com/dms/image/D4E22AQHZoiMKFLqItw/feedshare-shrink_800/0/1721176698384?e=1724284800&v=beta&t=3j9mxLd_pZ3r2rvAGS7yoSMPKCSPRu49K137aOkZHzo" alt="Descrição da imagem">
+                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQHZoiMKFLqItw/feedshare-shrink_800/0/1721176698384?e=1724284800&v=beta&t=3j9mxLd_pZ3r2rvAGS7yoSMPKCSPRu49K137aOkZHzo" alt="Descrição da imagem" width="330" height="auto">
                 </div>
                 <div id="agradecimentos" class="content hidden">
                     <h1>AGRADECIMENTOS</h1>
@@ -558,138 +587,141 @@
             </section>
         </main>
         <footer class="rodape">
-            <p>&copy; 2024 Memórias Vívidas - Todos os direitos reservados.</p>
+            <p>&copy; 2024 - Magali Borges da Fonseca.</p>
         </footer>
     </div>
+
+    <!-- Modal -->
     <div id="myModal" class="modal">
-        <span class="close">&times;</span>
+        <span class="close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="img01">
         <div id="caption"></div>
     </div>
+
     <script>
         function showContent(contentId) {
-    const contents = document.querySelectorAll('.content');
-    contents.forEach(content => {
-        if (content.id === contentId) {
-            content.classList.remove('hidden');
-        } else {
-            content.classList.add('hidden');
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                if (content.id === contentId) {
+                    content.classList.remove('hidden');
+                } else {
+                    content.classList.add('hidden');
+                }
+            });
+            // Recolher o menu automaticamente
+            const menu = document.querySelector('.coluna1');
+            menu.classList.remove('open');
+
+            // Garantir que o usuário possa deslizar o dedo para cima para visualizar o conteúdo
+            const mainContent = document.querySelector('.coluna2');
+            mainContent.scrollTop = 0; // Reiniciar a posição de rolagem para o topo
         }
-    });
-    // Recolher o menu automaticamente
-    const menu = document.querySelector('.coluna1');
-    menu.style.display = 'none';
 
-    // Garantir que o usuário possa deslizar o dedo para cima para visualizar o conteúdo
-    const mainContent = document.querySelector('.coluna2');
-    mainContent.scrollTop = 0; // Reiniciar a posição de rolagem para o topo
-}
-
-function toggleMenu() {
-    const menu = document.querySelector('.coluna1');
-    if (menu.style.display === 'none' || menu.style.display === '') {
-        menu.style.display = 'block';
-    } else {
-        menu.style.display = 'none';
-    }
-}
-
-document.querySelectorAll('.coluna2 img').forEach(img => {
-    img.addEventListener('click', function() {
-        openModal(this);
-    });
-});
-
-const modal = document.getElementById('myModal');
-const modalImg = document.getElementById('img01');
-const captionText = document.getElementById('caption');
-const closeModal = document.getElementsByClassName('close')[0];
-
-function openModal(img) {
-    modal.style.display = 'block';
-    modalImg.src = img.src;
-    captionText.innerHTML = img.alt;
-
-    if (img.width > img.height) {
-        modalImg.classList.add('horizontal');
-        modalImg.classList.remove('vertical');
-    } else {
-        modalImg.classList.add('vertical');
-        modalImg.classList.remove('horizontal');
-    }
-}
-
-closeModal.onclick = function() {
-    modal.style.display = 'none';
-}
-
-// Script para a galeria de fotos
-let currentIndex = 0;
-const images = document.querySelectorAll('.galeria-imagem');
-
-document.querySelector('.galeria-container').addEventListener('touchstart', handleTouchStart, false);
-document.querySelector('.galeria-container').addEventListener('touchmove', handleTouchMove, false);
-
-let xDown = null;
-let yDown = null;
-
-function handleTouchStart(evt) {
-    const firstTouch = (evt.touches || evt.originalEvent.touches)[0];
-    xDown = firstTouch.clientX;
-    yDown = firstTouch.clientY;
-}
-
-function handleTouchMove(evt) {
-    if (!xDown || !yDown) {
-        return;
-    }
-
-    let xUp = evt.touches[0].clientX;
-    let yUp = evt.touches[0].clientY;
-
-    let xDiff = xDown - xUp;
-    let yDiff = yDown - yUp;
-
-    if (Math.abs(xDiff) > Math.abs(yDiff)) {
-        // Detectar movimento horizontal
-        if (xDiff > 0) {
-            showNextImage();
-        } else {
-            showPrevImage();
+        function toggleMenu() {
+            const menu = document.querySelector('.coluna1');
+            if (menu.classList.contains('open')) {
+                menu.classList.remove('open');
+            } else {
+                menu.classList.add('open');
+            }
         }
-    } else {
-        // Detectar movimento vertical
-        const mainContent = document.querySelector('.coluna2');
-        if (yDiff > 0) {
-            mainContent.scrollTop += 50; // Deslizar para baixo
-        } else {
-            mainContent.scrollTop -= 50; // Deslizar para cima
+
+        document.querySelectorAll('.coluna2 img').forEach(img => {
+            img.addEventListener('click', function() {
+                openModal(this);
+            });
+        });
+
+        const modal = document.getElementById('myModal');
+        const modalImg = document.getElementById('img01');
+        const captionText = document.getElementById('caption');
+        const closeModal = document.getElementsByClassName('close')[0];
+
+        function openModal(img) {
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+            captionText.innerHTML = img.alt;
+
+            if (img.width > img.height) {
+                modalImg.classList.add('horizontal');
+                modalImg.classList.remove('vertical');
+            } else {
+                modalImg.classList.add('vertical');
+                modalImg.classList.remove('horizontal');
+            }
         }
-    }
 
-    xDown = null;
-    yDown = null;
-}
+        closeModal.onclick = function() {
+            modal.style.display = 'none';
+        }
 
-function showNextImage() {
-    images[currentIndex].classList.remove('active');
-    currentIndex = (currentIndex + 1) % images.length;
-    images[currentIndex].classList.add('active');
-}
+        // Script para a galeria de fotos
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.galeria-imagem');
 
-function showPrevImage() {
-    images[currentIndex].classList.remove('active');
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    images[currentIndex].classList.add('active');
-}
+        document.querySelector('.galeria-container').addEventListener('touchstart', handleTouchStart, false);
+        document.querySelector('.galeria-container').addEventListener('touchmove', handleTouchMove, false);
 
-// Adiciona evento de clique no menu para recolher e mostrar o conteúdo
-document.querySelectorAll('.coluna1 nav ul li a').forEach(link => {
-    link.addEventListener('click', function() {
-        showContent(this.getAttribute('onclick').match(/showContent\('(.+)'\)/)[1]);
-    });
-});
+        let xDown = null;
+        let yDown = null;
 
+        function handleTouchStart(evt) {
+            const firstTouch = (evt.touches || evt.originalEvent.touches)[0];
+            xDown = firstTouch.clientX;
+            yDown = firstTouch.clientY;
+        }
+
+        function handleTouchMove(evt) {
+            if (!xDown || !yDown) {
+                return;
+            }
+
+            let xUp = evt.touches[0].clientX;
+            let yUp = evt.touches[0].clientY;
+
+            let xDiff = xDown - xUp;
+            let yDiff = yDown - yUp;
+
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                // Detectar movimento horizontal
+                if (xDiff > 0) {
+                    showNextImage();
+                } else {
+                    showPrevImage();
+                }
+            } else {
+                // Detectar movimento vertical
+                const mainContent = document.querySelector('.coluna2');
+                if (yDiff > 0) {
+                    mainContent.scrollTop += 50; // Deslizar para baixo
+                } else {
+                    mainContent.scrollTop -= 50; // Deslizar para cima
+                }
+            }
+
+            xDown = null;
+            yDown = null;
+        }
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        function showPrevImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        // Adiciona evento de clique no menu para recolher e mostrar o conteúdo
+        document.querySelectorAll('.coluna1 nav ul li a').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                showContent(this.getAttribute('data-content'));
+            });
+        });
     </script>
 </body>
 </html>
