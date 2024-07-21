@@ -71,15 +71,15 @@
             padding-top: 20px;
             padding-bottom: 20px;
             flex-direction: column;
-            overflow-y: auto; /* Adiciona barra de rolagem */
-            padding: 10px; /* Ajusta o padding para melhor visibilidade */
+            overflow-y: auto;
+            padding: 10px;
         }
 
         .coluna1 {
             border: 1px solid #4682B4;
             padding: 15px;
             overflow-y: auto;
-            display: none; /* Esconder a coluna1 para mobile */
+            display: none;
             background-color: #f9f9f9;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -114,7 +114,7 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             flex: 4;
             font-size: 20px;
-            overflow-y: auto; /* Adiciona barra de rolagem */
+            overflow-y: auto;
         }
 
         .coluna2 h1, .coluna2 h2 {
@@ -134,7 +134,7 @@
         }
 
         .coluna2 img {
-            max-width: 100%; /* Ajusta as imagens ao conteúdo */
+            max-width: 100%;
             height: auto;
             display: block;
             margin-left: auto;
@@ -208,7 +208,7 @@
 
         @media screen and (max-width: 600px) {
             .coluna1 {
-                display: none; /* Esconde a coluna1 por padrão no mobile */
+                display: none;
             }
 
             .coluna2 {
@@ -295,6 +295,29 @@
             font-size: 20px;
             height: 150px;
         }
+
+        #capa {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 80px); /* Ajusta a altura para centralizar */
+            padding: 20px;
+        }
+
+        #capa img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #capa .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
@@ -324,7 +347,7 @@
             </aside>
             <section class="coluna2">
                 <div id="capa" class="content">
-                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQHZoiMKFLqItw/feedshare-shrink_800/0/1721176698384?e=1724284800&v=beta&t=3j9mxLd_pZ3r2rvAGS7yoSMPKCSPRu49K137aOkZHzo" alt="Descrição da imagem" style="margin-top: 50px;">
+                    <img src="https://media.licdn.com/dms/image/D4E22AQHZoiMKFLqItw/feedshare-shrink_800/0/1721176698384?e=1724284800&v=beta&t=3j9mxLd_pZ3r2rvAGS7yoSMPKCSPRu49K137aOkZHzo" alt="Descrição da imagem">
                 </div>
                 <div id="agradecimentos" class="content hidden">
                     <h1>AGRADECIMENTOS</h1>
