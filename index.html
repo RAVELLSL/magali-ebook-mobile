@@ -317,6 +317,24 @@
         .coluna2 .content img {
             margin: 0 auto;
         }
+
+        .seta-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .seta-esquerda, .seta-direita {
+            cursor: pointer;
+            font-size: 24px;
+            padding: 10px;
+            user-select: none;
+        }
+
+        .seta-esquerda:hover, .seta-direita:hover {
+            color: #00796b;
+        }
     </style>
 </head>
 <body>
@@ -647,60 +665,19 @@
         let currentIndex = 0;
         const images = document.querySelectorAll('.galeria-imagem');
 
-        document.querySelector('.galeria-container').addEventListener('touchstart', handleTouchStart, false);
-        document.querySelector('.galeria-container').addEventListener('touchmove', handleTouchMove, false);
-
-        let xDown = null;
-        let yDown = null;
-
-        function handleTouchStart(evt) {
-            const firstTouch = (evt.touches || evt.originalEvent.touches)[0];
-            xDown = firstTouch.clientX;
-            yDown = firstTouch.clientY;
+        function mudarImagem(n) {
+            showSlides(currentIndex += n);
         }
 
-        function handleTouchMove(evt) {
-            if (!xDown || !yDown) {
-                return;
+        function showSlides(n) {
+            if (n >= images.length) {
+                currentIndex = 0;
+            } else if (n < 0) {
+                currentIndex = images.length - 1;
             }
-
-            let xUp = evt.touches[0].clientX;
-            let yUp = evt.touches[0].clientY;
-
-            let xDiff = xDown - xUp;
-            let yDiff = yDown - yUp;
-
-            if (Math.abs(xDiff) > Math.abs(yDiff)) {
-                // Detectar movimento horizontal
-                if (xDiff > 0) {
-                    showNextImage();
-                } else {
-                    showPrevImage();
-                }
-            } else {
-                // Detectar movimento vertical
-                const mainContent = document.querySelector('.coluna2');
-                if (yDiff > 0) {
-                    mainContent.scrollTop += 50;
-                } else {
-                    mainContent.scrollTop -= 50;
-                }
-            }
-
-            xDown = null;
-            yDown = null;
-        }
-
-        function showNextImage() {
-            images[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % images.length;
-            images[currentIndex].classList.add('active');
-        }
-
-        function showPrevImage() {
-            images[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            images[currentIndex].classList.add('active');
+            images.forEach((img, index) => {
+                img.classList.toggle('active', index === currentIndex);
+            });
         }
 
         // Adiciona evento de clique no menu para recolher e mostrar o conteúdo
