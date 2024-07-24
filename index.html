@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memórias Vívidas - Magali Borges da Fonseca</title>
     <style>
-        @font-face {
+    @font-face {
     font-family: 'Scripter Serif';
     src: url('ScripterSerif-Regular.ttf') format('truetype');
 }
@@ -287,10 +287,16 @@ body {
     width: 70%;
     max-width: 300px;
     height: 100%;
-    background-color: #f9f9f9;
+    background: linear-gradient(to right, #1e3c72, #2a5298); /* Same gradient background */
+    color: white; /* White text color */
     transform: translateX(0);
     transition: transform 0.3s ease;
     z-index: 1000;
+}
+
+/* Estilos dos links da coluna1 quando aberta */
+.coluna1.aberta nav ul li a {
+    color: white; /* White text color */
 }
 
 /* Esconde a coluna1 por padrão em telas menores */
