@@ -6,223 +6,255 @@
     <title>Memórias Vívidas - Magali Borges da Fonseca</title>
     <style>
         @font-face {
-            font-family: 'Scripter Serif';
-            src: url('ScripterSerif-Regular.ttf') format('truetype');
-        }
+    font-family: 'Scripter Serif';
+    src: url('ScripterSerif-Regular.ttf') format('truetype');
+}
 
-        @font-face {
-            font-family: 'Lobster';
-            src: url('Lobster-Regular.ttf') format('truetype');
-        }
+@font-face {
+    font-family: 'Lobster';
+    src: url('Lobster-Regular.ttf') format('truetype');
+}
 
-        @font-face {
-            font-family: 'Open Sans';
-            src: url('OpenSans-Regular.ttf') format('truetype');
-        }
+@font-face {
+    font-family: 'Open Sans';
+    src: url('OpenSans-Regular.ttf') format('truetype');
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            background: url('https://img.freepik.com/vetores-gratis/vetor-de-design-de-papel-de-carta-marrom-em-branco_53876-175008.jpg') no-repeat center center fixed;
-            background-size: cover;
-            font-size: 18px;
-            color: #333;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
+body {
+    background: url('https://img.freepik.com/vetores-gratis/vetor-de-design-de-papel-de-carta-marrom-em-branco_53876-175008.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-size: 18px;
+    color: #333;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            border: 1px solid #4682B4;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-        }
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid #4682B4;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
 
-        .cabecalho {
-            display: none; /* Esconde o cabeçalho em dispositivos móveis */
-        }
+.cabecalho {
+    background-color: #eceff1;
+    padding: 6px;
+    text-align: center;
+    border: 1px solid #4682B4;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    flex-shrink: 0;
+}
 
-        .corpo {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            flex-direction: column;
-        }
+.cabecalho h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 44px;
+    color: #004d40;
+    margin-bottom: 5px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
 
-        .coluna1 {
-            position: fixed;
-            top: 0;
-            left: -250px; /* Esconde a coluna 1 fora da tela */
-            width: 250px;
-            height: 100%;
-            background-color: #f9f9f9;
-            border: 1px solid #4682B4;
-            padding: 15px;
-            overflow-y: auto;
-            transition: left 0.3s ease;
-            z-index: 1000;
-        }
+.cabecalho h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 26px;
+    font-weight: normal;
+    color: #00796b;
+    margin-top: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
 
-        .coluna2 {
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            flex: 1;
-            font-size: 20px;
-            overflow-y: auto;
-        }
+.corpo {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
-        .coluna2 h1, .coluna2 h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 26px;
-            color: #00796b;
-        }
+.coluna1 {
+    border: 1px solid #4682B4;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 250px;
+    margin-right: 15px;
+    font-size: 18px;
+}
 
-        .coluna2 p {
-            text-align: justify;
-            margin-bottom: 12px;
-            font-size: 22px;
-            line-height: 1.6;
-            color: #616161;
-            text-indent: 2cm;
-        }
+.coluna2 {
+    border: 1px solid #4682B4;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 4;
+    font-size: 20px;
+    overflow-y: auto; /* Adiciona barra de rolagem */
+}
 
-        .coluna2 img {
-            max-width: 500px;
-            height: auto;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            cursor: pointer;
-        }
+.coluna2 h1, .coluna2 h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: #00796b;
+}
 
-        .capa-img {
-            max-width: 330px;
-            height: auto;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            border: 2px solid #4682B4;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+.coluna2 p {
+    text-align: justify;
+    margin-bottom: 12px;
+    font-size: 22px;
+    line-height: 1.6;
+    color: #616161;
+    text-indent: 2cm;
+}
 
-        .rodape {
-            display: none; /* Esconde o rodapé em dispositivos móveis */
-        }
+.coluna2 img {
+    max-width: 500px; /* Aumenta o tamanho máximo das imagens no texto */
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
 
-        .hidden {
-            display: none;
-        }
+.capa-img {
+    max-width: 330px; /* Ajuste conforme necessário */
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #4682B4;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
-        .coluna1 nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
+.rodape {
+    background-color: #eceff1;
+    padding: 6px;
+    text-align: center;
+    border: 1px solid #4682B4;
+    font-size: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    flex-shrink: 0;
+}
 
-        .coluna1 nav ul li {
-            text-align: center;
-            margin-bottom: 10px;
-        }
+.hidden {
+    display: none;
+}
 
-        .coluna1 nav ul li a {
-            text-decoration: none;
-            color: #00796b;
-            font-weight: bold;
-            display: block;
-            padding: 8px;
-            border-radius: 5px;
-            background-color: #eceff1;
-            transition: background-color 0.3s ease;
-            font-size: 18px;
-        }
+.coluna1 nav ul {
+    list-style-type: none;
+    padding: 0;
+}
 
-        .coluna1 nav ul li a:hover {
-            background-color: #b2dfdb;
-        }
+.coluna1 nav ul li {
+    text-align: center;
+    margin-bottom: 10px;
+}
 
-        .galeria-container {
-            position: relative;
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
+.coluna1 nav ul li a {
+    text-decoration: none;
+    color: #00796b;
+    font-weight: bold;
+    display: block;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #eceff1;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+}
 
-        .galeria-imagem {
-            display: none;
-            width: 100%;
-            height: auto;
-        }
+.coluna1 nav ul li a:hover {
+    background-color: #b2dfdb;
+}
 
-        .galeria-imagem img {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: contain;
-            cursor: pointer;
-        }
+.galeria-container {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
 
-        .galeria-imagem p {
-            text-align: center;
-            font-size: 20px;
-        }
+.galeria-imagem {
+    display: none;
+    width: 100%;
+    height: auto;
+}
 
-        .galeria-imagem.active {
-            display: block;
-        }
+.galeria-imagem img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    cursor: pointer;
+}
 
-        .seta-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
+.galeria-imagem p {
+    text-align: center;
+    font-size: 20px;
+}
 
-        .seta-esquerda, .seta-direita {
-            cursor: pointer;
-            padding: 10px 20px;
-            color: #00796b;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.3s ease;
-            user-select: none;
-            border: 1px solid #00796b;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.7);
-            display: inline-block;
-            margin: 0 5px;
-        }
+.galeria-imagem.active {
+    display: block;
+}
 
-        .seta-esquerda:hover, .seta-direita:hover {
-            background-color: #b2dfdb;
-            color: white;
-        }
+.seta-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
 
-        #galeria-fotos {
-            overflow-y: auto;
-            flex: 1;
-            padding-right: 15px;
-        }
+.seta-esquerda, .seta-direita {
+    cursor: pointer;
+    padding: 10px 20px;
+    color: #00796b;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s ease;
+    user-select: none;
+    border: 1px solid #00796b;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: inline-block;
+    margin: 0 5px;
+}
 
-        /* Estilo para o botão Sumário */
+.seta-esquerda:hover, .seta-direita:hover {
+    background-color: #b2dfdb;
+    color: white;
+}
+
+#galeria-fotos {
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 15px;
+}
+
+/* Estilo para o botão Sumário */
 #sumario-btn {
     display: none; /* Oculto por padrão em telas maiores */
     position: fixed;
@@ -267,110 +299,122 @@
 
 /* Exibir o botão Sumário apenas em telas menores */
 @media screen and (max-width: 600px) {
+    .corpo {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .coluna1 {
+        margin-right: 0;
+        margin-bottom: 15px;
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .coluna1 nav ul li a {
+        padding: 12px;
+        font-size: 20px;
+    }
+
+    .coluna2 p {
+        font-size: 20px;
+        padding: 10px;
+        text-indent: 1cm;
+    }
+
+    .coluna2 img {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .cabecalho, .rodape {
+        margin: 10px;
+        padding: 12px;
+        font-size: 20px;
+    }
+
+    .coluna2 {
+        padding: 10px;
+    }
+
     #sumario-btn {
         display: block;
     }
 }
 
+/* Estilos do modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+}
 
-        @media screen and (max-width: 600px) {
-            .container {
-                margin: 0;
-                padding: 0;
-                border: none;
-                box-shadow: none;
-            }
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 
-            .coluna2 p {
-                font-size: 18px;
-            }
+.modal-content.horizontal {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+}
 
-            .botao-sumario {
-                display: block;
-                width: 100%;
-                background-color: #00796b;
-                color: white;
-                font-size: 18px;
-                padding: 10px;
-                text-align: center;
-                cursor: pointer;
-                margin-bottom: 10px;
-            }
-        }
+.modal-content.vertical {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+}
 
-        /* Estilos do modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            padding-top: 60px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.9);
-        }
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
 
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+@keyframes zoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
 
-        .modal-content.horizontal {
-            width: 100%;
-            height: auto;
-            max-height: 100%;
-        }
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-        .modal-content.vertical {
-            width: auto;
-            height: 100%;
-            max-width: 100%;
-        }
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
 
-        .modal-content, #caption {
-            animation-name: zoom;
-            animation-duration: 0.6s;
-        }
-
-        @keyframes zoom {
-            from {transform: scale(0)}
-            to {transform: scale(1)}
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        #caption {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-            text-align: center;
-            color: #ccc;
-            padding: 10px 0;
-            font-size: 20px;
-            height: 150px;
-        }
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    font-size: 20px;
+    height: 150px;
+}
 
     </style>
 </head>
@@ -381,7 +425,7 @@
             <aside class="coluna1">
                 <nav>
                     <ul>
-                        <li><a href="#" onclick="showContent('capa')">MEMÓRIAS VÍVIDAS</a></li>
+                        <li><a href="#" onclick="showContent('capa')">Capa</a></li>
                         <li><a href="#" onclick="showContent('agradecimentos')">Agradecimentos</a></li>
                         <li><a href="#" onclick="showContent('biografia')">Biografia</a></li>
                         <li><a href="#" onclick="showContent('infancia-feliz')">Fragmentos de uma Infância Feliz</a></li>
@@ -467,7 +511,7 @@
                     <p>Quando eu lembro do meu pai, me vem à mente a figura de um sujeito alegre, bonachão, sempre de bem com a vida e com os outros. Brincalhão, meio irreverente e um tanto debochado, era muito apegado à família e muito orgulhoso dos feitos/sucessos dos seus quatro filhos. Este orgulho não era sem razão, pois para um caminhoneiro, com pouco estudo, conseguir formar 01 jornalista, 02 médicos e 01 professora não foi tarefa fácil... Ao se referir aos filhos, ele dizia com carinho: "Lá em casa são 02 burros pra carga e duas cargas pra burro", mencionando os dois casais de filhos.</p>
                     <p>A preocupação com o futuro dos filhos e a necessidade de lhes abrir novos horizontes, fez com que meu pai tomasse a decisão de se mudar do interior para a capital. Com esta mudança ele deixou para trás uma vida tranquila, sem maiores preocupações, dividida entre as viagens de caminhão pelo Brasil afora (durante dias/semanas) e o retorno para casa, para o aconchego do lar, ao lado da mulher e dos filhos. A vida calma na cidade de Bom Jardim era compartilhada com uma legião de parentes e amigos, cuja maior diversão era sentar em cadeiras nas calçadas para jogar 'conversa fora' e ouvir de papai relatos dos inúmeros 'causos' acontecidos durante as viagens de caminhão pelas estradas de morte ao sul do país... Nesse particular, pode-se dizer que Seu Biu (como papai era mais conhecido) tinha um jeito todo especial de contar histórias, às quais ele emprestava o seu lado cômico e irreverente. Esta faceta lhe garantiu um sem número de admiradores que gostavam de ouvi-lo e dar gostosas gargalhadas com a sua maneira jocosa e entremeada de 'palavrões' ao narrar os acontecimentos.</p>
                     <p>Com a mudança para a capital, papai precisou se adaptar a um novo estilo de vida: cidade grande, nova casa, novos amigos/vizinhos, novos costumes, novo emprego... E o caminhoneiro tornou-se taxista... Vale esclarecer que a mudança foi apenas de endereço, pois Seu Biu continuou dedicado à profissão e à família. Sua preocupação maior era proporcionar o melhor para o bem-estar de sua mulher (muito querida e admirada) e dos seus quatro filhos, que continuaram sendo motivo de orgulho para ele, pelos avanços conseguidos nos estudos e na vida profissional.</p>
-                    <p>Em pouco tempo, a alegria contagiante de papai, a sua preocupação em servir/ajudar os outros, a simpatia/empatia com jovens e adultos conquistaram a admiração e o apreço de todos e Seu Biu tornou-se referência como pessoa de bem, querido por todos que conviveram com ele. Dentre os seus admiradores, estavam os inúmeros sobrinhos, moradores da mesma rua, que tinham grande respeito por sua pessoa e o chamavam carinhosamente de Tio Biu.</p>
+                    <p>Em pouco tempo, a alegria contagiante de papai, a sua preocupação em servir/ajudar os outros, a simpatia/empatia com jovens e adultos conquistaram a admiração e o apreço de todos e Seu Biu tornou-se referência como pessoa de bem, querido por todos que conviveram com ele. Dentre os seus admiradores, estavam os inúmeros sobrinhos, moradores da mesma rua, que tinham grande respeito por sua pessoa e o chamavam carinhosamente de Tiino.</p>
                     <p>Durante todo o tempo em que convivemos com papai, tivemos sempre ao nosso lado o amigo de todas as horas, com um sorriso nos lábios e uma história divertida no bolso, a nos ensinar que a vida deve ser vivida com alegria, que os problemas devem ser enfrentados com calma e que a solução dos mesmos chega na hora certa. Mesmo nos raros momentos de tristeza (ele também os tinha) papai não deixava transparecer desânimo ou amargura e nos incitava a seguir em frente e 'dar a volta por cima'.</p>
                     <p>No trato com as visitas, a sua vontade de agradar, a sua amabilidade era tamanha que ele chegava a oferecer coisas de que não dispunha no momento. Isso chegou a criar alguns transtornos para a família que tinha que providenciar às pressas coisas prometidas e que estavam faltando em casa. Agora nós encaramos como positiva esta faceta da personalidade de papai, uma pessoa que valorizava a amizade e queria presentear os amigos com as gentilezas de que era capaz.</p>
                     <p>Quando nossos irmãos, por questões profissionais, partiram para São Paulo e lá se estabeleceram, deixando uma grande lacuna na família, papai procurou compensar a ausência dos filhos queridos, aumentando o carinho e a dedicação à família. Dessa forma, papai, mamãe, eu e minha irmã ficamos mais unidos e fortes para enfrentar as dificuldades financeiras que se agravaram nesta época pela necessidade de custear os estudos universitários da filha caçula. Neste momento, papai já não trabalhava como taxista e nós dependíamos financeiramente da contribuição mensal dos nossos irmãos distantes e do meu salário de professora primária. Foram anos difíceis em que papai procurava disfarçar a tristeza que sentia por não poder comprar um carro novo e voltar ao trabalho. Na verdade, ele não se sentia bem por não poder contribuir financeiramente com a família e por depender exclusivamente dos filhos, mas procurava 'mascarar' esse sentimento de impotência com a sua maneira alegre e divertida de viver a vida.</p>
