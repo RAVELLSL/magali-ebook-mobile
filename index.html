@@ -49,30 +49,7 @@
         }
 
         .cabecalho {
-            background-color: #eceff1;
-            padding: 6px;
-            text-align: center;
-            border: 1px solid #4682B4;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            flex-shrink: 0;
-        }
-
-        .cabecalho h1 {
-            font-family: 'Lobster', cursive;
-            font-size: 44px;
-            color: #004d40;
-            margin-bottom: 5px;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .cabecalho h2 {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 26px;
-            font-weight: normal;
-            color: #00796b;
-            margin-top: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            display: none; /* Esconde o cabeçalho em dispositivos móveis */
         }
 
         .corpo {
@@ -81,34 +58,33 @@
             overflow: hidden;
             padding-top: 20px;
             padding-bottom: 20px;
+            flex-direction: column;
         }
 
         .coluna1 {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Esconde a coluna 1 fora da tela */
+            width: 250px;
+            height: 100%;
+            background-color: #f9f9f9;
             border: 1px solid #4682B4;
             padding: 15px;
             overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            flex: 1;
-            max-width: 250px;
-            margin-right: 15px;
-            font-size: 18px;
+            transition: left 0.3s ease;
+            z-index: 1000;
         }
 
         .coluna2 {
-            border: 1px solid #4682B4;
             padding: 15px;
             display: flex;
             flex-direction: column;
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            flex: 4;
+            flex: 1;
             font-size: 20px;
-            overflow-y: auto; /* Adiciona barra de rolagem */
+            overflow-y: auto;
         }
 
         .coluna2 h1, .coluna2 h2 {
@@ -128,7 +104,7 @@
         }
 
         .coluna2 img {
-            max-width: 500px; /* Aumenta o tamanho máximo das imagens no texto */
+            max-width: 500px;
             height: auto;
             display: block;
             margin-left: auto;
@@ -137,7 +113,7 @@
         }
 
         .capa-img {
-            max-width: 330px; /* Ajuste conforme necessário */
+            max-width: 330px;
             height: auto;
             display: block;
             margin-left: auto;
@@ -148,15 +124,7 @@
         }
 
         .rodape {
-            background-color: #eceff1;
-            padding: 6px;
-            text-align: center;
-            border: 1px solid #4682B4;
-            font-size: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            flex-shrink: 0;
+            display: none; /* Esconde o rodapé em dispositivos móveis */
         }
 
         .hidden {
@@ -255,29 +223,27 @@
         }
 
         @media screen and (max-width: 600px) {
-            .corpo {
-                flex-direction: column;
-            }
-
-            .coluna1 {
-                margin-right: 0;
-                margin-bottom: 15px;
-                font-size: 18px;
-            }
-
-            .coluna1 nav ul li a {
-                padding: 12px;
-                font-size: 20px;
+            .container {
+                margin: 0;
+                padding: 0;
+                border: none;
+                box-shadow: none;
             }
 
             .coluna2 p {
-                font-size: 22px;
+                font-size: 18px;
             }
 
-            .cabecalho, .rodape {
-                margin: 10px;
-                padding: 12px;
-                font-size: 20px;
+            .botao-sumario {
+                display: block;
+                width: 100%;
+                background-color: #00796b;
+                color: white;
+                font-size: 18px;
+                padding: 10px;
+                text-align: center;
+                cursor: pointer;
+                margin-bottom: 10px;
             }
         }
 
@@ -359,11 +325,8 @@
 </head>
 <body>
     <div class="container">
-        <header class="cabecalho">
-            <h1>Memórias Vívidas</h1>
-            <h2>Magali Borges da Fonseca</h2>
-        </header>
         <main class="corpo">
+            <button class="botao-sumario" onclick="toggleMenu()">Sumário</button>
             <aside class="coluna1">
                 <nav>
                     <ul>
@@ -389,7 +352,6 @@
                 <div id="capa" class="content">                    
                     <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQHZoiMKFLqItw/feedshare-shrink_800/0/1721176698384?e=1724284800&v=beta&t=3j9mxLd_pZ3r2rvAGS7yoSMPKCSPRu49K137aOkZHzo" alt="Descrição da imagem" width="330" height="auto">
                 </div>                
-                
                 <div id="agradecimentos" class="content hidden">
                     <h1>AGRADECIMENTOS</h1>            
                     <br>
@@ -448,7 +410,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/18WVoXO9qPuSVJ1IZjRWzpkxO_arAg2TP/preview" width="33%" height="80"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1iSAt6nlO6tvnU9skstRetPmvqovmd9CU/preview" width="33%" height="80"></iframe>
                     </div>
                     <br>
                     <p>Quando eu lembro do meu pai, me vem à mente a figura de um sujeito alegre, bonachão, sempre de bem com a vida e com os outros. Brincalhão, meio irreverente e um tanto debochado, era muito apegado à família e muito orgulhoso dos feitos/sucessos dos seus quatro filhos. Este orgulho não era sem razão, pois para um caminhoneiro, com pouco estudo, conseguir formar 01 jornalista, 02 médicos e 01 professora não foi tarefa fácil... Ao se referir aos filhos, ele dizia com carinho: "Lá em casa são 02 burros pra carga e duas cargas pra burro", mencionando os dois casais de filhos.</p>
@@ -533,7 +495,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1XBtbPycJRTehfmbD60R_iOYTxl9Il8Uk/preview" width="33%" height="80"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1RDIeZ-Gjc7EkebfbmB1ptZ2F_8WgOPF2/preview" width="33%" height="80"></iframe>
                     </div>
                     <br>
                     <p>No dia 06 de Agosto de 1944 nascia na cidade de Bom Jardim, Pernambuco, a pequena Magali, filha do casal Severino e Maria Auta Fonseca...</p>
@@ -749,3 +711,4 @@ mudarImagem(0);
     </script>
 </body>
 </html>
+
