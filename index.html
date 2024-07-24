@@ -222,6 +222,57 @@
             padding-right: 15px;
         }
 
+        /* Estilo para o botão Sumário */
+#sumario-btn {
+    display: none; /* Oculto por padrão em telas maiores */
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001; /* Para garantir que o botão fique acima de outros elementos */
+}
+
+/* Estilos para coluna1 ao ser aberta */
+.coluna1.aberta {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    max-width: 300px;
+    height: 100%;
+    background-color: #f9f9f9;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+/* Esconde a coluna1 por padrão em telas menores */
+.coluna1 {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 70%;
+    max-width: 300px;
+    height: 100%;
+    background-color: #f9f9f9;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+/* Exibir o botão Sumário apenas em telas menores */
+@media screen and (max-width: 600px) {
+    #sumario-btn {
+        display: block;
+    }
+}
+
+
         @media screen and (max-width: 600px) {
             .container {
                 margin: 0;
@@ -326,7 +377,7 @@
 <body>
     <div class="container">
         <main class="corpo">
-            <button class="botao-sumario" onclick="toggleMenu()">Sumário</button>
+            <button id="sumario-btn">Sumário</button>
             <aside class="coluna1">
                 <nav>
                     <ul>
@@ -708,7 +759,25 @@ closeBtn.onclick = function () {
 // Inicializa a galeria de fotos
 mudarImagem(0);
 
+
+// Função para alternar o menu de sumário
+function toggleMenu() {
+    var coluna1 = document.querySelector('.coluna1');
+    coluna1.classList.toggle('aberta');
+}
+
+// Adiciona evento de clique ao botão de sumário
+document.getElementById('sumario-btn').onclick = toggleMenu;
+
+// Fechar o menu ao clicar em um item
+var menuItems = document.querySelectorAll('.coluna1 nav ul li a');
+menuItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+        var coluna1 = document.querySelector('.coluna1');
+        coluna1.classList.remove('aberta');
+    });
+});
+
     </script>
 </body>
 </html>
-
