@@ -719,103 +719,117 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var increaseFontBtn = document.getElementById("increase-font-btn");
-        var decreaseFontBtn = document.getElementById("decrease-font-btn");
-        var sumarioBtn = document.getElementById("sumario-btn");
-        var coluna1 = document.querySelector(".coluna1");
-        var colunas = document.querySelectorAll(".coluna2 p, .coluna2 h1, .coluna2 h2, .coluna1 a");
-        var fontSize = 18;
-        var coluna2 = document.querySelector('.coluna2');
-        var rodape = document.querySelector('.rodape');
+   document.addEventListener("DOMContentLoaded", function () {
+    var increaseFontBtn = document.getElementById("increase-font-btn");
+    var decreaseFontBtn = document.getElementById("decrease-font-btn");
+    var sumarioBtn = document.getElementById("sumario-btn");
+    var coluna1 = document.querySelector(".coluna1");
+    var colunas = document.querySelectorAll(".coluna2 p, .coluna2 h1, .coluna2 h2, .coluna1 a");
+    var fontSize = 18;
+    var coluna2 = document.querySelector('.coluna2');
+    var rodape = document.querySelector('.rodape');
 
-        increaseFontBtn.addEventListener("click", function () {
-            fontSize += 1;
-            atualizarFonte();
+    increaseFontBtn.addEventListener("click", function () {
+        fontSize += 1;
+        atualizarFonte();
+    });
+
+    decreaseFontBtn.addEventListener("click", function () {
+        fontSize -= 1;
+        atualizarFonte();
+    });
+
+    sumarioBtn.addEventListener("click", function () {
+        coluna1.classList.toggle("aberta");
+    });
+
+    function atualizarFonte() {
+        colunas.forEach(function (element) {
+            element.style.fontSize = fontSize + "px";
         });
+    }
 
-        decreaseFontBtn.addEventListener("click", function () {
-            fontSize -= 1;
-            atualizarFonte();
+    function showContent(contentId) {
+        var contents = document.querySelectorAll('.content');
+        contents.forEach(function(content) {
+            content.classList.add('hidden');
         });
+        document.getElementById(contentId).classList.remove('hidden');
+        window.scrollTo(0, 0); // Scroll to top
+    }
 
-        sumarioBtn.addEventListener("click", function () {
-            coluna1.classList.toggle("aberta");
-        });
-
-        function atualizarFonte() {
-            colunas.forEach(function (element) {
-                element.style.fontSize = fontSize + "px";
-            });
+    function updateFooterPosition() {
+        var contentHeight = coluna2.scrollHeight;
+        var viewportHeight = window.innerHeight;
+        if (contentHeight < viewportHeight) {
+            rodape.style.position = 'fixed';
+            rodape.style.bottom = '0';
+            rodape.style.width = 'calc(100% - 40px)';
+        } else {
+            rodape.style.position = 'relative';
         }
+    }
 
-        function showContent(contentId) {
-            var contents = document.querySelectorAll('.content');
-            contents.forEach(function(content) {
-                content.classList.add('hidden');
-            });
-            document.getElementById(contentId).classList.remove('hidden');
-            window.scrollTo(0, 0); // Scroll to top
-        }
+    updateFooterPosition();
+    window.addEventListener('resize', updateFooterPosition);
+    coluna2.addEventListener('scroll', updateFooterPosition);
 
-        function updateFooterPosition() {
-            var contentHeight = coluna2.scrollHeight;
-            var viewportHeight = window.innerHeight;
-            if (contentHeight < viewportHeight) {
-                rodape.style.position = 'fixed';
-                rodape.style.bottom = '0';
-                rodape.style.width = 'calc(100% - 40px)';
-            } else {
-                rodape.style.position = 'relative';
-            }
-        }
+    // Função para a galeria de fotos
+    let imagemIndex = 0;
+    const imagens = document.querySelectorAll(".galeria-imagem");
 
-        updateFooterPosition();
-        window.addEventListener('resize', updateFooterPosition);
-        coluna2.addEventListener('scroll', updateFooterPosition);
-
-        // Função para a galeria de fotos
-        let imagemIndex = 0;
-        const imagens = document.querySelectorAll(".galeria-imagem");
-
-        function mudarImagem(direcao) {
-            imagens[imagemIndex].classList.remove("active");
-            imagemIndex = (imagemIndex + direcao + imagens.length) % imagens.length;
-            imagens[imagemIndex].classList.add("active");
-        }
-
-        // Inicializar galeria
+    function mudarImagem(direcao) {
+        imagens[imagemIndex].classList.remove("active");
+        imagemIndex = (imagemIndex + direcao + imagens.length) % imagens.length;
         imagens[imagemIndex].classList.add("active");
+    }
 
-        // Modal de imagens
-        var modal = document.getElementById("myModal");
-        var modalImg = document.getElementById("imgModal");
-        var captionText = document.getElementById("caption");
-        var closeModal = document.getElementsByClassName("close")[0];
+    // Inicializar galeria
+    imagens[imagemIndex].classList.add("active");
 
-        document.querySelectorAll('.galeria-img').forEach(img => {
-            img.onclick = function () {
-                modal.style.display = "block";
-                modalImg.src = this.src;
-                captionText.innerHTML = this.alt;
-                if (this.width > this.height) {
-                    modalImg.classList.add("horizontal");
-                    modalImg.classList.remove("vertical");
-                } else {
-                    modalImg.classList.add("vertical");
-                    modalImg.classList.remove("horizontal");
-                }
+    // Modal de imagens
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("imgModal");
+    var captionText = document.getElementById("caption");
+    var closeModal = document.getElementsByClassName("close")[0];
+
+    document.querySelectorAll('.galeria-img').forEach(img => {
+        img.onclick = function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+            if (this.width > this.height) {
+                modalImg.classList.add("horizontal");
+                modalImg.classList.remove("vertical");
+            } else {
+                modalImg.classList.add("vertical");
+                modalImg.classList.remove("horizontal");
             }
-        });
-
-        closeModal.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        modal.onclick = function () {
-            modal.style.display = "none";
         }
     });
+
+    closeModal.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    modal.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // Adiciona evento aos links do menu
+    var menuLinks = document.querySelectorAll('.coluna1 nav ul li a');
+    menuLinks.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            var targetId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+            showContent(targetId);
+            if (window.innerWidth <= 600) {
+                coluna1.classList.remove('aberta');
+            }
+        });
+    });
+});
+
 </script>
 </body>
 </html>
