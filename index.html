@@ -48,7 +48,6 @@
             margin: 20px;
             width: calc(100% - 40px);
             overflow: hidden;
-            flex: 1;
         }
 
         .cabecalho {
@@ -61,7 +60,7 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             flex-shrink: 0;
-            position: sticky;
+            position: fixed;
             top: 0;
             width: calc(100% - 40px);
         }
@@ -86,7 +85,6 @@
             padding-bottom: 20px;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
         }
 
         .coluna1 {
@@ -127,13 +125,12 @@
             overflow-y: auto;
             width: 100%;
             padding-bottom: 50px;
-            flex-grow: 1;
         }
 
         .coluna2 h1, .coluna2 h2 {
             text-align: center;
             margin-bottom: 20px;
-            margin-top: 80px;
+            margin-top: 80px; /* Add margin-top to avoid overlapping with header */
             font-size: 26px;
             color: #00796b;
         }
@@ -166,6 +163,7 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             flex-shrink: 0;
+            margin-top: auto;
         }
 
         .hidden {
@@ -705,112 +703,123 @@
                         </div>
                     </div>
                 </div>
-                        <div class="seta-container">
-                            <span class="seta-esquerda">&#10094;</span>
-                            <span class="seta-direita">&#10095;</span>
-                        </div>
-                    </div>
+                <div class="seta-container">
+                    <div class="seta-esquerda" onclick="mudarImagem(-1)">❮</div>
+                    <div class="seta-direita" onclick="mudarImagem(1)">❯</div>
                 </div>
-            </section>
-        </main>
-        <footer class="rodape">
-            <p>&copy; 2023 Magali Borges da Fonseca. Todos os direitos reservados.</p>
-        </footer>
+            </div>
+        </section>
+    </main>
+    <div class="rodape">
+        © 2023 Magali Borges da Fonseca. Todos os direitos reservados.
     </div>
+</div>
 
-    <div id="myModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="img01">
-        <div id="caption"></div>
-    </div>
+<!-- Modal para exibição de imagens ampliadas -->
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="imgModal">
+    <div id="caption"></div>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const coluna1 = document.querySelector('.coluna1');
-            const sumarioBtn = document.getElementById('sumario-btn');
-            const closeModalBtn = document.querySelector('.close');
-            const modal = document.getElementById('myModal');
-            const modalImg = document.getElementById('img01');
-            const captionText = document.getElementById('caption');
-            const imagens = document.querySelectorAll('.galeria-img');
-            const setaEsquerda = document.querySelector('.seta-esquerda');
-            const setaDireita = document.querySelector('.seta-direita');
-            const galeriaImagens = document.querySelectorAll('.galeria-imagem');
-            let galeriaIndex = 0;
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var increaseFontBtn = document.getElementById("increase-font-btn");
+        var decreaseFontBtn = document.getElementById("decrease-font-btn");
+        var sumarioBtn = document.getElementById("sumario-btn");
+        var coluna1 = document.querySelector(".coluna1");
+        var colunas = document.querySelectorAll(".coluna2 p, .coluna2 h1, .coluna2 h2, .coluna1 a");
+        var fontSize = 18;
+        var coluna2 = document.querySelector('.coluna2');
+        var rodape = document.querySelector('.rodape');
 
-            function showContent(contentId) {
-                document.querySelectorAll('.content').forEach(content => {
-                    content.classList.add('hidden');
-                });
-
-                const selectedContent = document.getElementById(contentId);
-                if (selectedContent) {
-                    selectedContent.classList.remove('hidden');
-                }
-
-                // Mostrar ou esconder botões de navegação
-                const galeriaContainer = document.querySelector('.galeria-container');
-                if (contentId === 'galeria-fotos') {
-                    galeriaContainer.style.display = 'block';
-                } else {
-                    galeriaContainer.style.display = 'none';
-                }
-            }
-
-            function updateGallery() {
-                galeriaImagens.forEach((imagem, index) => {
-                    imagem.classList.toggle('active', index === galeriaIndex);
-                });
-            }
-
-            setaEsquerda.addEventListener('click', function () {
-                galeriaIndex = (galeriaIndex - 1 + galeriaImagens.length) % galeriaImagens.length;
-                updateGallery();
-            });
-
-            setaDireita.addEventListener('click', function () {
-                galeriaIndex = (galeriaIndex + 1) % galeriaImagens.length;
-                updateGallery();
-            });
-
-            imagens.forEach(img => {
-                img.addEventListener('click', function () {
-                    modal.style.display = 'block';
-                    modalImg.src = this.src;
-                    captionText.innerHTML = this.alt;
-                });
-            });
-
-            closeModalBtn.addEventListener('click', function () {
-                modal.style.display = 'none';
-            });
-
-            sumarioBtn.addEventListener('click', function () {
-                coluna1.classList.toggle('aberta');
-            });
-
-            const increaseFontBtn = document.getElementById('increase-font-btn');
-            const decreaseFontBtn = document.getElementById('decrease-font-btn');
-            const corpoElement = document.querySelector('.corpo');
-            let fontSize = 20;
-
-            increaseFontBtn.addEventListener('click', function () {
-                if (fontSize < 30) {
-                    fontSize += 2;
-                    corpoElement.style.fontSize = fontSize + 'px';
-                }
-            });
-
-            decreaseFontBtn.addEventListener('click', function () {
-                if (fontSize > 14) {
-                    fontSize -= 2;
-                    corpoElement.style.fontSize = fontSize + 'px';
-                }
-            });
-
-            // Mostrar a capa inicialmente
-            showContent('capa');
+        increaseFontBtn.addEventListener("click", function () {
+            fontSize += 1;
+            atualizarFonte();
         });
-    </script>
+
+        decreaseFontBtn.addEventListener("click", function () {
+            fontSize -= 1;
+            atualizarFonte();
+        });
+
+        sumarioBtn.addEventListener("click", function () {
+            coluna1.classList.toggle("aberta");
+        });
+
+        function atualizarFonte() {
+            colunas.forEach(function (element) {
+                element.style.fontSize = fontSize + "px";
+            });
+        }
+
+        function showContent(contentId) {
+            var contents = document.querySelectorAll('.content');
+            contents.forEach(function(content) {
+                content.classList.add('hidden');
+            });
+            document.getElementById(contentId).classList.remove('hidden');
+            window.scrollTo(0, 0); // Scroll to top
+        }
+
+        function updateFooterPosition() {
+            var contentHeight = coluna2.scrollHeight;
+            var viewportHeight = window.innerHeight;
+            if (contentHeight < viewportHeight) {
+                rodape.style.position = 'fixed';
+                rodape.style.bottom = '0';
+                rodape.style.width = 'calc(100% - 40px)';
+            } else {
+                rodape.style.position = 'relative';
+            }
+        }
+
+        updateFooterPosition();
+        window.addEventListener('resize', updateFooterPosition);
+        coluna2.addEventListener('scroll', updateFooterPosition);
+
+        // Função para a galeria de fotos
+        let imagemIndex = 0;
+        const imagens = document.querySelectorAll(".galeria-imagem");
+
+        function mudarImagem(direcao) {
+            imagens[imagemIndex].classList.remove("active");
+            imagemIndex = (imagemIndex + direcao + imagens.length) % imagens.length;
+            imagens[imagemIndex].classList.add("active");
+        }
+
+        // Inicializar galeria
+        imagens[imagemIndex].classList.add("active");
+
+        // Modal de imagens
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("imgModal");
+        var captionText = document.getElementById("caption");
+        var closeModal = document.getElementsByClassName("close")[0];
+
+        document.querySelectorAll('.galeria-img').forEach(img => {
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+                if (this.width > this.height) {
+                    modalImg.classList.add("horizontal");
+                    modalImg.classList.remove("vertical");
+                } else {
+                    modalImg.classList.add("vertical");
+                    modalImg.classList.remove("horizontal");
+                }
+            }
+        });
+
+        closeModal.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        modal.onclick = function () {
+            modal.style.display = "none";
+        }
+    });
+</script>
 </body>
 </html>
