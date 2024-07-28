@@ -46,46 +46,45 @@
             padding: 20px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             margin: 20px;
-            width: calc(100% - 40px); /* Adjusting to occupy more horizontal space */
+            width: calc(100% - 40px);
+            overflow: hidden;
         }
 
         .cabecalho {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #eceff1;
-            padding: 6px;
-            text-align: center;
-            border: 1px solid #4682B4;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            background-color: #eceff1;
+            padding: 10px;
+            border: 1px solid #4682B4;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            flex-shrink: 0;
+            position: fixed;
+            top: 0;
+            width: calc(100% - 40px);
         }
 
-        .cabecalho #sumario-btn {
-            display: block;
-            position: relative;
-            margin-right: 10px;
+        .cabecalho button {
+            margin-left: 10px;
             padding: 10px 20px;
-            background: linear-gradient(to right, #1e3c72, #2a5298); /* Gradient from blue to dark blue */
+            background: linear-gradient(to right, #1e3c72, #2a5298);
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            z-index: 1001; /* Para garantir que o botão fique acima de outros elementos */
-            font-size: 20px; /* Increase font size */
+            z-index: 1001;
+            font-size: 20px;
         }
 
         .corpo {
             display: flex;
             flex: 1;
             overflow: hidden;
-            padding-top: 60px; /* Espaço para o cabeçalho fixo */
+            padding-top: 70px;
             padding-bottom: 20px;
-            align-items: center; /* Centering content vertically */
-            justify-content: center; /* Centering content horizontally */
+            align-items: center;
+            justify-content: center;
         }
 
         .coluna1 {
@@ -94,13 +93,23 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            background-color: #ffffff; /* Background color for better readability */
+            background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             flex: 1;
             max-width: 250px;
             margin-right: 15px;
             font-size: 18px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            height: calc(100% - 90px);
+        }
+
+        .coluna1.aberta {
+            transform: translateX(0);
         }
 
         .coluna2 {
@@ -115,7 +124,7 @@
             font-size: 20px;
             overflow-y: auto;
             width: 100%;
-            padding-bottom: 50px; /* Increase padding at the bottom */
+            padding-bottom: 50px;
         }
 
         .coluna2 h1, .coluna2 h2 {
@@ -126,35 +135,20 @@
         }
 
         .coluna2 p {
-            text-align: left; /* Align text to the left */
+            text-align: left;
             margin-bottom: 12px;
             font-size: 22px;
             line-height: 1.6;
             color: #616161;
-            text-indent: 0; /* Remove text indent */
-        }
-
-        .coluna2 p:last-child {
-            margin-bottom: 50px; /* Add margin to the last paragraph to prevent cutting off */
+            text-indent: 0;
         }
 
         .coluna2 img {
-            max-width: 500px; /* Aumenta o tamanho máximo das imagens no texto */
+            max-width: 500px;
             height: auto;
             display: block;
             margin-left: auto;
             margin-right: auto;
-            cursor: pointer;
-        }
-
-        .capa-img {
-            max-width: 90%; /* Ajuste conforme necessário */
-            height: auto;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            border: 2px solid #4682B4;
-            border-radius: 8px;
             cursor: pointer;
         }
 
@@ -186,12 +180,12 @@
 
         .coluna1 nav ul li a {
             text-decoration: none;
-            color: #1e3c72; /* Dark blue color for the menu text */
+            color: #1e3c72;
             font-weight: bold;
             display: block;
             padding: 8px;
             border-radius: 5px;
-            background-color: #f1f1f1; /* Lighter background color for better readability */
+            background-color: #f1f1f1;
             transition: background-color 0.3s ease;
             font-size: 18px;
         }
@@ -225,7 +219,7 @@
         }
 
         .galeria-imagem p {
-            text-align: center; /* Center align captions */
+            text-align: center;
             font-size: 20px;
         }
 
@@ -259,47 +253,21 @@
             color: white;
         }
 
-        #galeria-fotos {
-            overflow-y: auto;
-            flex: 1;
-            padding-right: 15px;
-        }
-
-        /* Estilos para coluna1 ao ser aberta */
-        .coluna1.aberta {
+        #sumario-btn {
+            display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 70%;
-            max-width: 300px;
-            height: 100%;
-            background: linear-gradient(to right, #1e3c72, #2a5298); /* Same gradient background */
-            color: white; /* White text color */
-            transform: translateX(0);
-            transition: transform 0.3s ease;
-            z-index: 1000;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            font-size: 20px;
         }
 
-        /* Estilos dos links da coluna1 quando aberta */
-        .coluna1.aberta nav ul li a {
-            color: linear-gradient(to right, #1e3c72, #2a5298); /* Same gradient background */
-        }
-
-        /* Esconde a coluna1 por padrão em telas menores */
-        .coluna1 {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 70%;
-            max-width: 300px;
-            height: 100%;
-            background-color: #f9f9f9;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-            z-index: 999; /* Reduzir z-index para garantir que o botão fique acima */
-        }
-
-        /* Exibir o botão Sumário apenas em telas menores */
         @media screen and (max-width: 600px) {
             .corpo {
                 flex-direction: column;
@@ -321,7 +289,7 @@
             .coluna2 p {
                 font-size: 20px;
                 padding: 10px;
-                text-indent: 0; /* Remove text indent */
+                text-indent: 0;
             }
 
             .coluna2 img {
@@ -341,7 +309,7 @@
             }
 
             iframe {
-                width: 100%; /* Ajuste para iframes */
+                width: 100%;
             }
 
             #sumario-btn {
@@ -349,7 +317,6 @@
             }
         }
 
-        /* Estilos do modal */
         .modal {
             display: none;
             position: fixed;
@@ -422,14 +389,15 @@
             font-size: 20px;
             height: 150px;
         }
-
     </style>
 </head>
 <body>
-    <div class="cabecalho">
-        <button id="sumario-btn">Sumário</button>
-    </div>
     <div class="container">
+        <div class="cabecalho">
+            <button id="increase-font-btn">A+</button>
+            <button id="decrease-font-btn">A-</button>
+            <button id="sumario-btn">Sumário</button>
+        </div>
         <main class="corpo">
             <aside class="coluna1">
                 <nav>
@@ -755,79 +723,107 @@
     </div>
 
     <script>
-        // Função para mostrar o conteúdo correspondente ao link do sumário
         function showContent(contentId) {
-            var contents = document.querySelectorAll('.content');
-            contents.forEach(function(content) {
-                content.classList.add('hidden');
-            });
-            document.getElementById(contentId).classList.remove('hidden');
-        }
+    var contents = document.querySelectorAll('.content');
+    contents.forEach(function(content) {
+        content.classList.add('hidden');
+    });
+    document.getElementById(contentId).classList.remove('hidden');
+}
 
-        // Função para alternar a visibilidade da coluna1 em telas menores
-        document.getElementById('sumario-btn').addEventListener('click', function() {
-            var coluna1 = document.querySelector('.coluna1');
-            if (coluna1.style.transform === 'translateX(0px)') {
-                coluna1.style.transform = 'translateX(-100%)';
-            } else {
-                coluna1.style.transform = 'translateX(0px)';
-            }
-        });
+function toggleMenu() {
+    var coluna1 = document.querySelector('.coluna1');
+    coluna1.classList.toggle('aberta');
+}
 
-        // Função para mudar a imagem da galeria
-        var currentImageIndex = 0;
-        var images = document.querySelectorAll('.galeria-imagem');
+document.getElementById('sumario-btn').onclick = toggleMenu;
 
-        function showImage(index) {
-            images.forEach(function(image, i) {
-                image.classList.remove('active');
-                if (i === index) {
-                    image.classList.add('active');
-                }
-            });
-        }
+var menuItems = document.querySelectorAll('.coluna1 nav ul li a');
+menuItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+        var coluna1 = document.querySelector('.coluna1');
+        coluna1.classList.remove('aberta');
+    });
+});
 
-        function mudarImagem(direction) {
-            currentImageIndex += direction;
-            if (currentImageIndex < 0) {
-                currentImageIndex = images.length - 1;
-            } else if (currentImageIndex >= images.length) {
-                currentImageIndex = 0;
-            }
-            showImage(currentImageIndex);
-        }
+var currentFontSize = 18;
 
-        // Função para modal de imagens
-        var modal = document.getElementById('myModal');
-        var modalImg = document.getElementById('img01');
-        var captionText = document.getElementById('caption');
-        var imgs = document.querySelectorAll('.galeria-img');
+function increaseFontSize() {
+    currentFontSize += 2;
+    document.body.style.fontSize = currentFontSize + 'px';
+}
 
-        imgs.forEach(function(img) {
-            img.onclick = function() {
-                modal.style.display = 'block';
-                modalImg.src = this.src;
-                captionText.innerHTML = this.alt;
-                if (this.naturalWidth > this.naturalHeight) {
-                    modalImg.classList.add('horizontal');
-                    modalImg.classList.remove('vertical');
-                } else {
-                    modalImg.classList.add('vertical');
-                    modalImg.classList.remove('horizontal');
-                }
-            };
-        });
+function decreaseFontSize() {
+    if (currentFontSize > 10) {
+        currentFontSize -= 2;
+        document.body.style.fontSize = currentFontSize + 'px';
+    }
+}
 
-        var span = document.getElementsByClassName('close')[0];
-        span.onclick = function() {
-            modal.style.display = 'none';
-        };
+document.getElementById('increase-font-btn').addEventListener('click', increaseFontSize);
+document.getElementById('decrease-font-btn').addEventListener('click', decreaseFontSize);
 
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        };
+var currentIndex = 0;
+
+function mudarImagem(direcao) {
+    var imagens = document.getElementsByClassName('galeria-imagem');
+    imagens[currentIndex].classList.remove('active');
+    currentIndex += direcao;
+    if (currentIndex >= imagens.length) currentIndex = 0;
+    if (currentIndex < 0) currentIndex = imagens.length - 1;
+    imagens[currentIndex].classList.add('active');
+}
+
+// Função para mostrar o modal com a imagem ampliada
+function openModal(imgElement) {
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+
+    modal.style.display = "block";
+    modalImg.src = imgElement.src;
+    captionText.innerHTML = imgElement.alt;
+
+    if (imgElement.naturalWidth > imgElement.naturalHeight) {
+        modalImg.classList.add('horizontal');
+        modalImg.classList.remove('vertical');
+    } else {
+        modalImg.classList.add('vertical');
+        modalImg.classList.remove('horizontal');
+    }
+}
+
+// Função para fechar o modal
+function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+}
+
+// Adiciona evento de clique nas imagens para abrir o modal
+var imagens = document.getElementsByClassName("galeria-img");
+for (var i = 0; i < imagens.length; i++) {
+    imagens[i].onclick = function () {
+        openModal(this);
+    };
+}
+
+// Adiciona evento de clique no botão de fechar para fechar o modal
+var closeBtn = document.getElementsByClassName("close")[0];
+closeBtn.onclick = function () {
+    closeModal();
+};
+
+// Fecha o modal ao clicar fora dele
+window.onclick = function(event) {
+    var modal = document.getElementById("myModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
+
+// Inicializa a galeria de fotos
+mudarImagem(0);
+
     </script>
 </body>
 </html>
