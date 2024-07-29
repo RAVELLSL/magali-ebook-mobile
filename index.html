@@ -18,6 +18,7 @@
         @font-face {
             font-family: 'Open Sans';
             src: url('OpenSans-Regular.ttf') format('truetype');
+            font-display: swap; /* Melhorar o carregamento de fontes */
         }
 
         * {
@@ -32,7 +33,7 @@
             font-size: 18px;
             color: #333;
             height: 100vh;
-            overflow: hidden;
+            overflow: auto; /* Corrigido */
             display: flex;
             flex-direction: column;
         }
@@ -47,7 +48,6 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             margin: 20px;
             width: calc(100% - 40px);
-            overflow: hidden;
         }
 
         .cabecalho {
@@ -79,7 +79,7 @@
         .corpo {
             display: flex;
             flex: 1;
-            overflow: hidden;
+            overflow: auto; /* Corrigido */
             padding-top: 80px;
             padding-bottom: 20px;
             align-items: center;
@@ -162,7 +162,9 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             flex-shrink: 0;
-            margin-top: auto;
+            position: relative; /* Corrigido */
+            width: 100%; /* Corrigido */
+            box-sizing: border-box;
         }
 
         .hidden {
@@ -277,6 +279,8 @@
                 margin-bottom: 15px;
                 font-size: 18px;
                 padding: 10px;
+                width: 100%; /* Corrigido */
+                max-width: none; /* Corrigido */
             }
 
             .coluna1 nav ul li a {
@@ -332,8 +336,10 @@
         .modal-content {
             margin: auto;
             display: block;
-            width: 100%;
-            height: 100%;
+            width: 80%; /* Corrigido */
+            max-width: 800px; /* Corrigido */
+            height: auto;
+            max-height: 80vh; /* Corrigido */
             object-fit: contain;
         }
 
@@ -391,33 +397,31 @@
 </head>
 <body>
     <div class="container">
-        <div class="cabecalho">
+        <header class="cabecalho">
             <button id="increase-font-btn">A+</button>
             <button id="decrease-font-btn">A-</button>
             <button id="sumario-btn">Sumário</button>
-        </div>
+        </header>
         <main class="corpo">
-            <aside class="coluna1">
-                <nav>
-                    <ul>
-                        <li><a href="#" onclick="showContent('capa')">Capa</a></li>
-                        <li><a href="#" onclick="showContent('agradecimentos')">Agradecimentos</a></li>
-                        <li><a href="#" onclick="showContent('biografia')">Biografia</a></li>
-                        <li><a href="#" onclick="showContent('infancia-feliz')">Fragmentos de uma Infância Feliz</a></li>
-                        <li><a href="#" onclick="showContent('severino-fonseca')">Severino Fonseca<br>"O Cara"</a></li>
-                        <li><a href="#" onclick="showContent('tempo-amizade')">O Tempo e a Amizade</a></li>
-                        <li><a href="#" onclick="showContent('tempo-parou-praia-jacare')">E o Tempo Parou na Praia do Jacaré</a></li>
-                        <li><a href="#" onclick="showContent('virtuose-serra')">Virtuose na Serra</a></li>
-                        <li><a href="#" onclick="showContent('hoje-06-agosto')">Hoje, 06 de Agosto</a></li>
-                        <li><a href="#" onclick="showContent('espirito-natalino')">O Espírito Natalino Ainda Vive</a></li>
-                        <li><a href="#" onclick="showContent('dia-eleicao')">Dia de Eleição...</a></li>
-                        <li><a href="#" onclick="showContent('novo-coronavirus')">O Novo Coronavírus</a></li>
-                        <li><a href="#" onclick="showContent('fragmentos-infancia-feliz-80')">Fragmentos de Uma Infância Feliz<br>(revisitado aos 80 anos)</a></li>
-                        <li><a href="#" onclick="showContent('anexos')">Anexos</a></li>
-                        <li><a href="#" onclick="showContent('galeria-fotos')">Galeria de Fotos</a></li>
-                    </ul>
-                </nav>
-            </aside>
+            <nav class="coluna1">
+                <ul>
+                    <li><a href="#" onclick="showContent('capa')">Capa</a></li>
+                    <li><a href="#" onclick="showContent('agradecimentos')">Agradecimentos</a></li>
+                    <li><a href="#" onclick="showContent('biografia')">Biografia</a></li>
+                    <li><a href="#" onclick="showContent('infancia-feliz')">Fragmentos de uma Infância Feliz</a></li>
+                    <li><a href="#" onclick="showContent('severino-fonseca')">Severino Fonseca<br>"O Cara"</a></li>
+                    <li><a href="#" onclick="showContent('tempo-amizade')">O Tempo e a Amizade</a></li>
+                    <li><a href="#" onclick="showContent('tempo-parou-praia-jacare')">E o Tempo Parou na Praia do Jacaré</a></li>
+                    <li><a href="#" onclick="showContent('virtuose-serra')">Virtuose na Serra</a></li>
+                    <li><a href="#" onclick="showContent('hoje-06-agosto')">Hoje, 06 de Agosto</a></li>
+                    <li><a href="#" onclick="showContent('espirito-natalino')">O Espírito Natalino Ainda Vive</a></li>
+                    <li><a href="#" onclick="showContent('dia-eleicao')">Dia de Eleição...</a></li>
+                    <li><a href="#" onclick="showContent('novo-coronavirus')">O Novo Coronavírus</a></li>
+                    <li><a href="#" onclick="showContent('fragmentos-infancia-feliz-80')">Fragmentos de Uma Infância Feliz<br>(revisitado aos 80 anos)</a></li>
+                    <li><a href="#" onclick="showContent('anexos')">Anexos</a></li>
+                    <li><a href="#" onclick="showContent('galeria-fotos')">Galeria de Fotos</a></li>
+                </ul>
+            </nav>
             <section class="coluna2">
                 <div id="capa" class="content"><br><br><br><br>                   
                     <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQHbEvVJ93uiAA/feedshare-shrink_800/0/1721844331171?e=1724889600&v=beta&t=tQGxtTY8EQuFCjJCb22Tt6vxgQKsl1PnXZ6ZPG04bNI" width="330" height="auto">
