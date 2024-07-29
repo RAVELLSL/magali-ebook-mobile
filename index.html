@@ -49,9 +49,6 @@
         }
 
         .cabecalho {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             background-color: #eceff1;
             padding: 6px;
             text-align: center;
@@ -61,20 +58,21 @@
             flex-shrink: 0;
         }
 
-        .cabecalho button {
-            margin: 0 10px;
-            padding: 6px 12px;
-            border: none;
-            border-radius: 5px;
-            background: linear-gradient(to right, #0066cc, #00ccff);
-            color: white;
-            font-size: 18px; /* Aumentando o tamanho da fonte */
-            cursor: pointer;
-            transition: background 0.3s ease;
+        .cabecalho h1 {
+            font-family: 'Lobster', cursive;
+            font-size: 44px;
+            color: #004d40;
+            margin-bottom: 5px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
         }
 
-        .cabecalho button:hover {
-            background: linear-gradient(to right, #004080, #0080ff);
+        .cabecalho h2 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 26px;
+            font-weight: normal;
+            color: #00796b;
+            margin-top: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .corpo {
@@ -85,45 +83,19 @@
             padding-bottom: 20px;
         }
 
-        .menu-sumario {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 250px;
-            height: 100%;
-            background: linear-gradient(to bottom, #0066cc, #00ccff);
-            color: white;
-            display: none;
+        .coluna1 {
+            border: 1px solid #4682B4;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
             flex-direction: column;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            z-index: 1001;
-            overflow-y: auto; /* Adicionando barra de rolagem vertical */
-        }
-
-        .menu-sumario ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .menu-sumario ul li {
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        .menu-sumario ul li a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            display: block;
-            padding: 8px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .menu-sumario ul li a:hover {
-            background-color: #004080;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            max-width: 250px;
+            margin-right: 15px;
+            font-size: 18px;
         }
 
         .coluna2 {
@@ -134,9 +106,9 @@
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            flex: 1;
+            flex: 4;
             font-size: 20px;
-            overflow-y: auto;
+            overflow-y: auto; /* Adiciona barra de rolagem */
         }
 
         .coluna2 h1, .coluna2 h2 {
@@ -149,13 +121,14 @@
         .coluna2 p {
             text-align: justify;
             margin-bottom: 12px;
+            font-size: 22px;
             line-height: 1.6;
             color: #616161;
             text-indent: 2cm;
         }
 
         .coluna2 img {
-            max-width: 100%; /* Ajuste para garantir que a imagem fique na área do texto */
+            max-width: 500px; /* Ajusta o tamanho máximo das imagens no texto */
             height: auto;
             display: block;
             margin-left: auto;
@@ -163,8 +136,122 @@
             cursor: pointer;
         }
 
+        .capa-img {
+            max-width: 330px; /* Ajuste conforme necessário */
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #4682B4;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .rodape {
+            background-color: #eceff1;
+            padding: 6px;
+            text-align: center;
+            border: 1px solid #4682B4;
+            font-size: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            flex-shrink: 0;
+        }
+
         .hidden {
             display: none;
+        }
+
+        .coluna1 nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .coluna1 nav ul li {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .coluna1 nav ul li a {
+            text-decoration: none;
+            color: #00796b;
+            font-weight: bold;
+            display: block;
+            padding: 8px;
+            border-radius: 5px;
+            background-color: #eceff1;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+        }
+
+        .coluna1 nav ul li a:hover {
+            background-color: #b2dfdb;
+        }
+
+        .galeria-container {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .galeria-imagem {
+            display: none;
+            width: 100%;
+            height: auto;
+        }
+
+        .galeria-imagem img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            cursor: pointer;
+        }
+
+        .galeria-imagem p {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .galeria-imagem.active {
+            display: block;
+        }
+
+        .seta-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .seta-esquerda, .seta-direita {
+            cursor: pointer;
+            padding: 10px 20px;
+            color: #00796b;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.3s ease;
+            user-select: none;
+            border: 1px solid #00796b;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .seta-esquerda:hover, .seta-direita:hover {
+            background-color: #b2dfdb;
+            color: white;
+        }
+
+        #galeria-fotos {
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 15px;
         }
 
         @media screen and (max-width: 600px) {
@@ -172,12 +259,29 @@
                 flex-direction: column;
             }
 
-            .cabecalho button {
-                font-size: 16px; /* Ajuste para dispositivos móveis */
-                padding: 4px 8px;
+            .coluna1 {
+                margin-right: 0;
+                margin-bottom: 15px;
+                font-size: 18px;
+            }
+
+            .coluna1 nav ul li a {
+                padding: 12px;
+                font-size: 20px;
+            }
+
+            .coluna2 p {
+                font-size: 22px;
+            }
+
+            .cabecalho, .rodape {
+                margin: 10px;
+                padding: 12px;
+                font-size: 20px;
             }
         }
 
+        /* Estilos do modal */
         .modal {
             display: none;
             position: fixed;
@@ -251,23 +355,41 @@
             height: 150px;
         }
 
-        /* Adicionando espaço em branco ao final do conteúdo */
-        .coluna2 .content::after {
-            content: " ";
-            display: block;
-            height: 20px;
+        .botao {
+            font-size: 20px; /* Aumenta o tamanho da fonte dos botões */
+            padding: 8px 12px;
+            margin: 0 10px;
+            border: 1px solid #4682B4;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #eceff1;
+        }
+
+        .botao:hover {
+            background-color: #b2dfdb;
+        }
+
+        .cabecalho .botoes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="cabecalho">
-            <button onclick="adjustFontSize(1)">A+</button>
-            <button onclick="adjustFontSize(-1)">A-</button>            
-            <button onclick="toggleMenu()">Sumário</button>
+            <h1>Memórias Vívidas</h1>
+            <h2>Magali Borges da Fonseca</h2>
+            <div class="botoes">
+                <button class="botao" id="aumentar" onclick="alterarTamanhoFonte(1)">A+</button>
+                <button class="botao" id="diminuir" onclick="alterarTamanhoFonte(-1)">A-</button>
+                <button class="botao" id="sumario" onclick="toggleMenu()">Sumário</button>
+            </div>
         </header>
         <main class="corpo">
-            <aside class="menu-sumario">
+            <aside class="coluna1">
                 <nav>
                     <ul>
                         <li><a href="#" onclick="showContent('capa')">MEMÓRIAS VÍVIDAS</a></li>
@@ -289,18 +411,17 @@
                 </nav>
             </aside>
             <section class="coluna2">
-                <div id="capa" class="content">
+                <div id="capa" class="content">                    
                     <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQHbEvVJ93uiAA/feedshare-shrink_800/0/1721844331171?e=1724889600&v=beta&t=tQGxtTY8EQuFCjJCb22Tt6vxgQKsl1PnXZ6ZPG04bNI" width="330" height="auto">
-                </div>
-
+                </div>                
+                
                 <div id="agradecimentos" class="content hidden">
-                    <h1>AGRADECIMENTOS</h1>
+                    <h1>AGRADECIMENTOS</h1>            
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1agXtQRP3Zq0IKyFpyRv2CahtDaQ8_2Tg/preview" width="100%" height="70"></iframe>
-                    </div>
-                    <br>
+                    <iframe src="https://drive.google.com/file/d/1agXtQRP3Zq0IKyFpyRv2CahtDaQ8_2Tg/preview" width="33%" height="80"></iframe>
+                </div><br>
                     <p>Diante do mundo que se apresenta para mim, estou meio amedrontada, sem saber como proceder para me sair bem. A rapidez com que tudo acontece me deixa sem condições de acompanhar tudo.</p>
                     <p>Tenho que agradecer às pessoas que contribuíram para que eu me sinta com coragem de enfrentar essa nova vida: os profissionais de saúde - enfermeiros e médicos do Hospital Esperança, onde estive internada por cinco meses, e os que continuam me atendendo em regime domiciliar - fisioterapeuta, psicólogo, massoterapeuta e nutricionista.</p>
                     <p>Agradeço, em especial, à minha irmã Iolita, que foi o grande baluarte dessa luta durante todo o período de minha internação e que continua me ajudando no dia a dia dessa nova vida. Expresso minha profunda gratidão às cuidadoras Nadiane Ferreira, Suzana Vieira e Mercês Lira. Apesar de suas distintas origens e personalidades, elas se destacaram por sua atenção e dedicação, desempenhando um papel crucial na elevação da minha autoestima. Da mesma forma, sou imensamente grata aos funcionários do condomínio, cuja assistência em variadas circunstâncias foi inestimável. Também estendo meus agradecimentos a todos os amigos e familiares que demonstraram preocupação e ofereceram suporte durante esse período desafiador, contribuindo significativamente para minha jornada de recuperação e bem-estar.</p>
@@ -308,15 +429,14 @@
                     <p>Agradeço ao professor Ravell pela sua habilidade, delicadeza e pelo trabalho de formatação do meu site e livro. Ele é um amigão, além de um profissional excelente, sério, dedicado aos alunos e que tem um cabedal de conhecimento e memória privilegiada, transmitindo segurança, o que o faz admirado por todos que o conhecem e desfrutam de sua amizade. Agradeço também a Elitarcia Fonseca pelo trabalho realizado em arte design da capa do livro e convites, decoração do salão de festas, lembrancinhas e planejamento geral do evento.</p>
                     <p>Agradeço às pessoas que têm me orientado e me atendido, e me dizem que eu não tenho que fazer como fazia antes. Devo deixar de lado as obrigações, vivendo sem amarras, sem cobranças e procurando fazer só o que é possível. Medalhas, eu já conquistei todas, e tenho que procurar viver no que se apresenta para mim, no agora.</p>
                 </div>
-
+                
                 <div id="biografia" class="content hidden">
                     <h1>BIOGRAFIA</h1>
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1_xoEBSLYOXUxdsYVlSnZ8mQa-6u8mHCl/preview"  width="100%" height="70"></iframe>
-                    </div>
-                    <br>
+                        <iframe src="https://drive.google.com/file/d/1_xoEBSLYOXUxdsYVlSnZ8mQa-6u8mHCl/preview" width="33%" height="80"></iframe>
+                    </div><br>
                     <p>Magali Borges da Fonseca, natural de Bom Jardim, Pernambuco, é filha de Severino Fonseca e Maria Auta Borges, e é irmã de Múcio (jornalista), Márcio (médico) e Iolita Borges (psiquiatra e artista plástica). Em 1949, sua família mudou-se para o Recife em busca de melhores condições de vida e oportunidades educacionais para os filhos. Essa mudança marcaria o início de uma trajetória notável.</p>
                     <p>Desde cedo, Magali se destacou em sua vida escolar e acadêmica. No Colégio Nossa Senhora do Carmo, não apenas se sobressaiu em seus estudos, mas também foi laureada no curso pedagógico, o que lhe garantiu uma posição privilegiada como professora na rede estadual de ensino. Sua paixão pela educação a levou à Universidade Federal de Pernambuco, onde se formou em Pedagogia. Mais tarde, especializou-se em Orientação Educacional e Supervisão Escolar pela Universidade Católica de Pernambuco, aprimorando suas habilidades e conhecimento no campo educacional.</p>
                     <p>A vida profissional de Magali foi igualmente de grande destaque. Por sete anos, assumiu o papel de professora na Faculdade de Filosofia de Caruaru, onde lecionou a disciplina Medidas Educacionais. Seu trabalho na Secretaria de Educação de Pernambuco, como Supervisora Escolar, e sua dedicação de uma década ao SENAC (PE), onde atuou na supervisão escolar dos cursos de educação à distância, refletem seu compromisso profundo com a melhoria da educação.</p>
@@ -324,14 +444,14 @@
                     <p>Magali encontrou nas crônicas uma forma de expressar sua análise de fatos, sua compreensão da realidade, e um meio de resgatar memórias e vivências. Seu olhar crítico, tanto social quanto político, permeava suas obras, permitindo-lhe explorar temas profundos e relevantes através de sua escrita.</p>
                     <p>A vida de Magali Borges da Fonseca é um testemunho de dedicação à educação e à escrita literária. Sua história é um exemplo de como a paixão pelo conhecimento e pela expressão criativa pode influenciar positivamente a vida de muitos, deixando um legado duradouro.</p>
                 </div>
-
+                
                 <div id="infancia-feliz" class="content hidden">
                     <h2>FRAGMENTOS DE UMA INFÂNCIA FELIZ</h2>
-                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQGNBV9nenXN7g/feedshare-shrink_800/0/1721212998739?e=1724284800&v=beta&t=d-Mpg4RKAA075KJU08kyBi47OfZWOen9P-6U602E5oU" alt="FRAGMENTOS DE UMA INFÂNCIA FELIZ" width="100%" height="auto"> <!-- Ajuste no tamanho -->
+                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQGNBV9nenXN7g/feedshare-shrink_800/0/1721212998739?e=1724284800&v=beta&t=d-Mpg4RKAA075KJU08kyBi47OfZWOen9P-6U602E5oU" alt="FRAGMENTOS DE UMA INFÂNCIA FELIZ" width="550" height="auto">
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1hp7dJscxXmNTOVYcX6l-6nLIFeih81J4/preview"  width="100%" height="70"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1hp7dJscxXmNTOVYcX6l-6nLIFeih81J4/preview" width="33%" height="80"></iframe>
                     </div>
                     <br>
                     <p>É sempre bom recordar fatos marcantes vividos durante a nossa infância e que, com certeza, se refletiram na nossa maneira de ser e de agir nos dias de hoje...</p>
@@ -349,11 +469,11 @@
 
                 <div id="severino-fonseca" class="content hidden">
                     <h1>SEVERINO FONSECA - "O CARA"</h1>
-                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQFliZkzdjwKAQ/feedshare-shrink_800/0/1721213066202?e=1724284800&v=beta&t=GRnbPMRpt0F06HCljG5zh1Qpi7fWX1IdmVIMcH31EM8" alt="SEVERINO FONSECA - O CARA" width="100%" height="auto"> <!-- Ajuste no tamanho -->
+                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQFliZkzdjwKAQ/feedshare-shrink_800/0/1721213066202?e=1724284800&v=beta&t=GRnbPMRpt0F06HCljG5zh1Qpi7fWX1IdmVIMcH31EM8" alt="SEVERINO FONSECA - O CARA" width="550" height="auto">
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1iSAt6nlO6tvnU9skstRetPmvqovmd9CU/preview"  width="100%" height="70"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1iSAt6nlO6tvnU9skstRetPmvqovmd9CU/preview" width="33%" height="80"></iframe>
                     </div>
                     <br>
                     <p>Quando eu lembro do meu pai, me vem à mente a figura de um sujeito alegre, bonachão, sempre de bem com a vida e com os outros. Brincalhão, meio irreverente e um tanto debochado, era muito apegado à família e muito orgulhoso dos feitos/sucessos dos seus quatro filhos. Este orgulho não era sem razão, pois para um caminhoneiro, com pouco estudo, conseguir formar 01 jornalista, 02 médicos e 01 professora não foi tarefa fácil... Ao se referir aos filhos, ele dizia com carinho: "Lá em casa são 02 burros pra carga e duas cargas pra burro", mencionando os dois casais de filhos.</p>
@@ -367,14 +487,14 @@
                     <p>Quando eu lembro do meu pai eu recordo com saudade e com um misto de tristeza e de alegria os momentos em que nos reuníamos nas refeições (preparadas com carinho e perfeição por mamãe) quando papai nos alegrava com as suas brincadeiras, com as suas histórias, suas imitações, fazendo-nos rir e esquecer por alguns instantes, das dificuldades financeiras, dos problemas, da saudade dos irmãos distantes... E como mamãe o repreendia quando ele se excedia nas histórias e brincadeiras e abusava dos palavrões que eram sua marca registrada... E como tudo terminava em gostosas gargalhadas, pois papai sabia como ninguém, quebrar as nossas resistências para compartilhar com ele desses momentos de alegria e descontração que eram únicos e permanecerão para sempre nas nossas lembranças...</p>
                     <p>Infelizmente, nós ficamos privados da presença do nosso pai muito cedo, pois um AVC fulminante o levou desta vida aos 57 anos de idade, deixando um grande vazio em nossas vidas e deixando o mundo menos alegre e colorido, sem a animação, a espontaneidade, as brincadeiras, a ingenuidade, o riso fácil, o brilho que emanavam de sua figura inesquecível...</p>
                 </div>
-
+                
                 <div id="tempo-amizade" class="content hidden">
                     <h1>O TEMPO E A AMIZADE</h1>
-                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQEIFxqHchi7XA/feedshare-shrink_800/0/1721213109397?e=1724284800&v=beta&t=amUG3v8IWESbD9H5JJlqN7IaWL-A6IRTlFlk1rNl8dM" alt="O TEMPO E A AMIZADE" width="100%" height="auto"> <!-- Ajuste no tamanho -->
+                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQEIFxqHchi7XA/feedshare-shrink_800/0/1721213109397?e=1724284800&v=beta&t=amUG3v8IWESbD9H5JJlqN7IaWL-A6IRTlFlk1rNl8dM" alt="O TEMPO E A AMIZADE" width="550" height="auto">
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
-                    <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1OLTORycFjMVkIbC2vNom2bIPezO6foWu/preview"  width="100%" height="70"></iframe>
+                     <div style="text-align: center;">
+                        <iframe src="https://drive.google.com/file/d/1OLTORycFjMVkIbC2vNom2bIPezO6foWu/preview" width="33%" height="80"></iframe>
                     </div>
                     <br>
                     <p>
@@ -393,14 +513,14 @@
                     <p>As horas passam e independem da vontade das pessoas. O nosso tempo é a gente quem faz. Cabe a cada um de nós estabelecer prioridades para melhor utilização do nosso tempo e, se dermos prioridade ao 'relacionamento afetivo', com certeza nós encontramos tempo para exercitá-lo, apesar de uma rotina diária que está a exigir, cada vez mais, passos velozes e estressados de cada um de nós...</p>
                     <p>É preciso que o homem moderno saia do seu casulo e saiba melhor aproveitar as maravilhosas conquistas proporcionadas pelas transformações científicas e tecnológicas. É preciso, também, que este homem possa exercitar ações de solidariedade e fraternidade necessárias para um viver em paz e harmonia com os seus semelhantes. Caso contrário, de nada adiantará ao ser humano ingressar neste 'admirável mundo novo', se permanecer cada dia mais sozinho e fechado no seu mundo interior, sem socializar as suas conquistas com aqueles que o rodeiam e que, com certeza, tendem a acrescentar algo ao seu desenvolvimento como pessoa... Afinal, investir em cultivar amizades tem um retorno garantido sob a forma de carinho, atenção, dedicação e respeito que os verdadeiros amigos fazem questão de nos presentear, sem exigir nada em troca.</p>
                 </div>
-
+                
                 <div id="tempo-parou-praia-jacare" class="content hidden">
                     <h1>E O TEMPO PAROU NA PRAIA DO JACARÉ...</h1>
-                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQFZeYd3giL9fQ/feedshare-shrink_800/0/1721213145428?e=1724284800&v=beta&t=8IBPmNg1hPeiKWzOa4obrYDhDA3I-OLwJQ-4sb7XVD4" alt="E O TEMPO PAROU NA PRAIA DO JACARÉ..." width="100%" height="auto"> <!-- Ajuste no tamanho -->
+                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQFZeYd3giL9fQ/feedshare-shrink_800/0/1721213145428?e=1724284800&v=beta&t=8IBPmNg1hPeiKWzOa4obrYDhDA3I-OLwJQ-4sb7XVD4" alt="E O TEMPO PAROU NA PRAIA DO JACARÉ..." width="550" height="auto">
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
-                    <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1gLopQGeqOQ8y2ai_7yYo7AN_hpM1gjZ3/preview"  width="100%" height="70"></iframe>
+                     <div style="text-align: center;">
+                        <iframe src="https://drive.google.com/file/d/1gLopQGeqOQ8y2ai_7yYo7AN_hpM1gjZ3/preview" width="33%" height="80"></iframe>
                     </div>
                     <br>
                     <p>Há alguns dias, tive o privilégio de assistir a um espetáculo de rara beleza - o pôr-do-sol na Praia do Jacaré, em João Pessoa.</p>
@@ -415,137 +535,255 @@
 
                 <div id="virtuose-serra" class="content hidden">
                     <h1>VIRTUOSE “NA SERRA”</h1>
-                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQGx_s5Z9qBuqw/feedshare-shrink_800/0/1719794286046?e=1722470400&v=beta&t=e6gWXuaKEllZDUfHpcoJqM5zo_ZWWEkclhVv1J0JzMk" alt="VIRTUOSE NA SERRA" width="100%" height="auto"> <!-- Ajuste no tamanho -->
+                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQGx_s5Z9qBuqw/feedshare-shrink_800/0/1719794286046?e=1722470400&v=beta&t=e6gWXuaKEllZDUfHpcoJqM5zo_ZWWEkclhVv1J0JzMk" alt="VIRTUOSE NA SERRA" width="550" height="auto">
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1RGrdPe098EP9fnsoHfp-gRD_eEfk6VOH/preview"  width="100%" height="70"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1RGrdPe098EP9fnsoHfp-gRD_eEfk6VOH/preview" width="33%" height="80"></iframe>
                     </div>
                     <br>
                     <p>O programa era “imperdível”. Afinal, a realização de uma série de concertos para comemorar os 200 anos dos compositores Schumann e Chopin, com a participação de musicistas locais e internacionais e totalmente aberta ao público não era para se desprezar…</p>
                     <p>Assim, partimos para Gravatá, cenário das apresentações, para curtir um raro momento de música erudita, tentando com isso conseguir um pouco de paz, de elevação do espírito tão necessário neste mundo tão conturbado e estressante em que vivemos.</p>
                     <p>Por nossa familiaridade com o município, nós já sabíamos que Gravatá carece de locais próprios para um empreendimento desta magnitude. No entanto, nós confiamos na capacidade organizacional do regente e diretor artístico, músico Rafael Garcia, na certeza de que seriam encontrados caminhos para sanar as dificuldades advindas da falta de espaço próprio para a realização do festival. Além disso, nós queríamos mostrar, com a nossa presença, que acreditamos que projetos dessa natureza têm tudo para dar certo, pois levar a música clássica para todos e em todos os lugares não se trata apenas de um sonho de um musicista apaixonado. Afinal, a orquestra virtuose já é uma realidade…</p>
                     <p>O local escolhido para as apresentações, a igreja Matriz, embora esteja situada em um ponto alto e privilegiado, fica localizada no centro do comércio, e, por isso mesmo, está sujeita a toda sorte de ruídos provenientes do grande movimento da área central da cidade. Assim, o barulho dos carros com suas buzinas, das pessoas transitando, dos comerciantes anunciando seus produtos, mostraram que o local não foi o palco ideal para a realização do evento. Além disso, por se tratar de um festival aberto ao público, as portas abertas permitiram que as pessoas entrassem e saíssem a todo momento, prejudicando a concentração daqueles que, como nós, queriam realmente curtir o espetáculo…</p>
-                    <p>E, ainda, a superlotação da igreja, impediu que o ar circulasse livremente e o que se viu foi um calor escaldante que deixou o ambiente “pesado”, prejudicando um pouco a atuação dos músicos. No entanto, a competência dos instrumentistas e a qualidade da música executada foram capazes de superar essas dificuldades e de proporcionar à grande maioria do público presente a satisfação de assistir a um belo espetáculo, de excelente qualidade e graça, a ponto de, em alguns momentos, esquecermos dos problemas advindos da precariedade do local escolhido para o evento…</p>
-                    <p>Durante a apresentação, observamos que, à medida que os acordes iam sendo tocados, a nossa imaginação nos transportava para outros recantos e a harmonia musical era tanta que nos deixava em paz conosco e com o mundo. Nesse momento, a beleza do som, a destreza dos músicos, a afinação dos instrumentos, a harmonia das vozes, tudo isto nos fazia esquecer, por alguns momentos, da nossa condição de seres humanos imperfeitos e nos sentíamos leves, elevados, com a sensação de que a música tem este poder transformador de nos transportar a um estado de encantamento em que o mundo de fora passa a ser menos importante, deixando-nos concentrados, apenas, no mundo da música e da harmonia, em que tudo é perfeito e nada consegue desviar a nossa atenção do espetáculo em si.</p>
-                    <p>Assim, durante a realização do concerto, todo o ruído “de fora” foi deixado de lado e pudemos, por algumas horas, esquecer os problemas do mundo atual, deixar o estresse de lado e curtir momentos de raro prazer proporcionado pela música de qualidade executada com rara habilidade e precisão.</p>
-                    <p>Por tudo isto, nós acreditamos que o projeto tem tudo para dar certo e nós nos propomos a acompanhar a sua realização, acreditando no grande poder da música clássica e nos seus benefícios para o espírito, assim como apostamos na capacidade organizacional do maestro Rafael Garcia, para vencer as dificuldades e proporcionar ao público de todos os lugares a grande alegria de se deliciar com os acordes de Schumann e Chopin…</p>
+                    <p>E, ainda, a superlotação da igreja, impediu que o ar circulasse livremente e o que se viu foi um calor escaldante que deixou o ambiente “pesado”, prejudicando um pouco a atuação dos músicos. Um dos solistas, por sinal brilhante, ficou com a camisa encharcada de suor e precisou enxugar o rosto e o violino, várias vezes, com a própria camisa para poder continuar o recital…</p>
+                    <p>A programação do festival incluía várias apresentações durante uma semana e uma destas aconteceu no sábado às 11 horas da manhã. Sábado é dia de feira na cidade, o que provoca um grande aumento populacional e todo o movimento gira no entorno da igreja Matriz. Por conta disso, o que se viu durante a apresentação da orquestra foi o aglomerado de pessoas nas portas e nos corredores do templo, pessoas que falavam e gesticulavam sem parar, o que tirou um pouco do brilho do espetáculo. Muitos feirantes, atraídos pelo “inusitado” do espetáculo e movidos muito mais pela curiosidade, circulavam livremente com suas sacolas de compras, desviando um pouco a atenção dos que queriam se concentrar diante do que estava sendo apresentado. Para pessoas como nós, amantes da música clássica, que queriam realmente aproveitar aquele momento especial de contato com músicos brilhantes, talentosos e que são motivo de orgulho para todos nós, ficou no ar o sentimento de coisa inacabada…</p>
+                    <p>Vale esclarecer que o espetáculo no sábado à noite foi tranquilo, o público presente se comportou de forma respeitosa e concentrada e nós pudemos curtir mais e melhor a apresentação da orquestra. Vale, também, salientar e enaltecer, o profissionalismo, a competência dos solistas e dos membros da orquestra virtuosi que conseguiram realizar com maestria os números programados, superando as condições adversas do ambiente e brindando o público com peças maravilhosas que encantam a todos.</p>
+                    <p>Cabe a nós torcer para que projetos culturais dessa natureza tenham continuidade e mais eventos como estes se multipliquem para a satisfação de um público como o nosso, ainda carente de espetáculos de boa qualidade. Que venha o terceiro Festival Virtuosi de Gravatá!!!</p>
                 </div>
 
                 <div id="hoje-06-agosto" class="content hidden">
-                    <h1>HOJE, 06 DE AGOSTO</h1>
-                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQF0JggN9XGxHw/feedshare-shrink_800/0/1719794300157?e=1722470400&v=beta&t=8fdO9gH8Yzj6yE0MRj8SopJ_1sw0W3IcrJubMYPt18s" alt="HOJE, 06 DE AGOSTO" width="100%" height="auto"> <!-- Ajuste no tamanho -->
+                    <h1>HOJE, 06 DE AGOSTO...</h1>
+                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQFosx-RhcJUgw/feedshare-shrink_800/0/1719794010941?e=1722470400&v=beta&t=g8LXe1PMaL178CTZB2_srR04lMzVoA09DMMe6-KXJqI" alt="HOJE, 06 DE AGOSTO..." width="550" height="auto">
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1jUX6k9-JcCx4KnJYZ8BQ2mGy1b_WsdQ5/preview"  width="100%" height="70"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1RDIeZ-Gjc7EkebfbmB1ptZ2F_8WgOPF2/preview" width="33%" height="80"></iframe>
                     </div>
                     <br>
-                    <p>Mais um aniversário... Eu sinto que ele chegou, não pela folhinha (no tempo da minha mãe se usava muito a “folhinha”), nem pelo calendário do computador, mas pelas manifestações de carinho, amor e afeto que recebo de todos os lugares e pelas mais variadas formas de comunicação... A internet e suas múltiplas ferramentas, as mensagens por correios, os telefonemas, os amigos do condomínio, os colegas do trabalho... Cada um se expressa da forma que pode e que sabe e, às vezes, a mensagem mais simples é a que mais toca o nosso coração... A sensibilidade de cada um, neste momento, é o que mais importa para mim, pois revela os sentimentos que às vezes ficam escondidos, guardados no fundo do peito, e que só precisam de um “empurrãozinho” para aflorar e se mostrar em toda a sua plenitude.</p>
-                    <p>Hoje, pela manhã, ao ouvir os primeiros sons da natureza: os passarinhos gorjeando, as folhas batendo na janela e a claridade de um dia nublado penetrando pelas frestas das cortinas, eu senti um misto de alegria e tristeza. Alegria porque Deus me permitiu mais um aniversário (e é maravilhoso estar viva), tristeza porque estou numa fase de mudança de vida muito difícil para enfrentar... Mas, logo me veio à lembrança a frase de minha filha, repetida como um mantra: "a senhora é vencedora". E, neste momento, eu acredito que sou vencedora, sim, pois tenho tido força, coragem, determinação para enfrentar o desafio de aprender a viver novamente... E esta certeza é que me faz acreditar que posso vencer as dificuldades e prosseguir com a esperança de que tudo vai passar e eu hei de ser feliz mais uma vez...</p>
-                    <p>Hoje eu acordei mais esperançosa, menos triste, pois posso contar com a ajuda de muitos amigos e familiares que me dizem sempre palavras de conforto, carinho, estímulo e encorajamento e me fazem acreditar que esta etapa da minha vida é passageira e eu hei de ter forças para vencê-la. No entanto, nada do que foi feito até agora terá valor se eu não acreditar que posso continuar a lutar com fé, coragem e disposição para alcançar a vitória. Não foi fácil chegar até aqui, mas a minha trajetória de vida, com todas as dificuldades enfrentadas e vencidas me ajuda a continuar acreditando e a ter a certeza de que tudo vai dar certo e, assim como nasci de novo para a vida, há cinco anos atrás, hoje renasce em mim a esperança de prosseguir com forças renovadas para vencer os novos desafios que se apresentam.</p>
-                    <p>Quero expressar minha eterna gratidão a todos os familiares, amigos, profissionais de saúde, cuidadores, funcionários, colegas, todos que me ajudaram e continuam a me ajudar com palavras e ações de estímulo e encorajamento, demonstrando o amor, o carinho, a amizade, a ternura que são indispensáveis à manutenção da vida e ao meu bem estar. Vocês foram e continuam sendo essenciais para mim nesta luta diária e que eu não saberia enfrentar sozinha.</p>
-                    <p>Não vou nomear ninguém para não ser injusta com alguém que eu possa esquecer, mas a certeza que eu tenho é que todos, indistintamente, moram no meu coração e ocupam um espaço reservado aos amigos e às pessoas queridas. Portanto, recebam o meu carinho, a minha gratidão, o meu abraço de amiga e o meu desejo de que Deus esteja presente na vida de cada um e os proteja e os ilumine em suas trajetórias.</p>
+                    <p>No dia 06 de Agosto de 1944 nascia na cidade de Bom Jardim, Pernambuco, a pequena Magali, filha do casal Severino e Maria Auta Fonseca...</p>
+                    <p>Hoje, 06 de Agosto de 2010, eu estou completando 66 anos de idade...</p>
+                    <p>Hoje, dia do meu aniversário, acordei com uma sensação estranha!</p>
+                    <p>Normalmente eu me levanto “meio pra baixo”, desanimada, sem coragem para enfrentar a “mesmice” de mais um dia que começa. Essa aura de pessimismo é resultante de uma depressão crônica que me acompanha há vários anos.</p>
+                    <p>Hoje, 06 de Agosto, foi diferente! Estou me sentindo em paz comigo mesma, estou feliz por completar 66 anos e estar viva quando tantas pessoas com as quais tive a felicidade de conviver ficaram pelo caminho...</p>
+                    <p>Hoje, 06 de Agosto, ao contrário dos dias anteriores, eu parei para pensar e cheguei à conclusão de que devo me considerar uma pessoa feliz; se eu cheguei até essa idade, tendo driblado a morte mais de uma vez, é porque ainda tenho uma missão a cumprir nesta vida...</p>
+                    <p>Na realidade, após um longo período de atividade profissional ao qual me dediquei com afinco e tive merecido reconhecimento graças à dedicação, ao profissionalismo e, por que não dizer, à competência por mim demonstrados, não me sinto totalmente gratificada por haver parado de trabalhar... Se, por um lado, eu me considero realizada pela satisfação de dever cumprido, por outro lado, eu sinto necessidade de preencher o meu tempo livre com atividades que me completem e deem um novo rumo à minha vida. Afinal, aposentadoria não significa final de linha e sim, uma nova etapa, um novo caminhar e que, ao lado de novos desafios, novos compromissos e sacrifícios, traz também mais autonomia graças à experiência adquirida e maior liberdade para administrar o tempo disponível, sem as “amarras” e a obrigatoriedade impostas pelo trabalho formal.</p>
+                    <p>Hoje, 06 de Agosto, eu preciso me convencer de que sou uma pessoa feliz senão vejamos:</p>
+                    <p>Aos 66 anos eu gozo de relativa saúde que me permite levar uma vida normal (apesar de dois enfartos) já que disponho das condições necessárias (físicas e materiais) para passear, viajar, disposição para realizar exercícios físicos regulares e autonomia para resolver as questões da vida diária... É claro que convivo com problemas de saúde decorrentes da idade e da inevitável carga genética, mas, todos são passíveis de serem contornados com acompanhamento médico, exames e medicamentos (o meu plano de saúde me permite essas regalias)...</p>
+                    <p>Aos 66 anos de idade eu tenho uma legião de amigos, na sua maioria antigos companheiros de trabalho, cuja amizade se solidificou com o passar dos anos. Graças a esses amigos eu conto com pessoas leais, companheiros inseparáveis que estão sempre presentes nos meus momentos de alegria ou de tristeza. Isso é muito importante, no momento em que vivemos uma crise nos relacionamentos afetivos, fruto de uma sociedade ao mesmo tempo globalizada e individualizada, na qual as pessoas se fecham cada vez mais nos seus quadrados, não permitindo que os limites sejam ultrapassados. É como diz Augusto Cury: “a família moderna está se tornando um grupo de estranhos; todos vivem ilhados no seu próprio mundo; o diálogo está morrendo; as pessoas estão sós no meio da multidão.” ... Sob este prisma, eu posso me considerar uma pessoa privilegiada, pois tenho amigos que me ajudam a caminhar neste longo caminho que é o da convivência humana. Nesse sentido, chego a considerá-los como parte da família já que os verdadeiros parentes (sobrinhos, primos...) vêm se distanciando cada vez mais de mim e de minha irmã, vítimas que são desta sociedade individualista, verdadeira “roda viva” de um sistema social onde não há “tempo” para alimentar as relações de parentesco, principalmente quando se está à quilômetros e quilômetros de distância (como é o nosso caso)...</p>
+                    <p>Aos 66 anos de idade tenho uma situação econômica equilibrada, que me permite administrar os meus gastos sem maiores dificuldades e me deixa livre para ajudar financeiramente aqueles que precisam de mim...</p>
+                    <p>Aos 66 anos de idade eu faço um balanço positivo da minha vida! Durante todos esses anos eu vivenciei experiências variadas; experimentei erros e acertos; colhi vitórias e derrotas; tive perdas e ganhos, amores e desamores, alegrias e tristezas. A experiência resultante de tudo isto tem me ajudado a ser uma pessoa melhor: a entender mais aqueles que me cercam, a perdoar aqueles que me magoaram, a valorizar mais as coisas essenciais em detrimento do ilusório, do supérfluo, enfim tenho me esforçado para ter uma melhor qualidade de vida. É claro que esse aprendizado não é fácil e exige um esforço contínuo de renovação e uma dose de força e coragem para enfrentar as dificuldades e superar erros e fracassos na eterna luta pela vida... É claro que é preciso conviver diariamente com a impaciência e irritação próprias da idade e tentar superar as limitações, a insegurança, os conflitos, a fragilidade da pessoa idosa na tentativa de superar o estigma de que o idoso é “carta fora do baralho”.</p>
+                    <p>Aos 66 anos de idade eu me convenço de que ainda há tempo para um repensar sobre a vida e para assumir uma postura mais positiva, uma atitude mais realista diante do mundo, afinal, a vida é um eterno aprendizado e cabe a cada um de nós assumir a direção da sua própria história no sentido de reescrevê-la... De uma coisa eu tenho certeza: enquanto tiver a sensibilidade necessária para contemplar e me enternecer diante do belo, bem como para me indignar diante das injustiças sociais; enquanto eu tiver lucidez e for capaz de administrar as minhas emoções e sentimentos, de construir relações afetivas saudáveis e de acreditar na humanidade, sonhando com um mundo melhor, posso dizer que vale a pena viver. Apesar e mesmo tendo 66 anos de idade...</p>
                 </div>
 
                 <div id="espirito-natalino" class="content hidden">
-                    <h1>O ESPÍRITO NATALINO AINDA VIVE</h1>
-                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQFFccZcCxgeqw/feedshare-shrink_800/0/1719794324578?e=1722470400&v=beta&t=Hf91H4ifWykPSWe9D15wRuLGFYzE0akWVmfRp3uJSOc" alt="O ESPÍRITO NATALINO AINDA VIVE" width="100%" height="auto"> <!-- Ajuste no tamanho -->
+                    <h1>O ESPÍRITO NATALINO AINDA VIVE...</h1>
+                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQGrQGLyhyBk1Q/feedshare-shrink_800/0/1719793567678?e=1722470400&v=beta&t=sCkUDYOActhHd6A2aeX5uoltkR7cTt_f6p7Nh16fiHg" alt="O ESPÍRITO NATALINO AINDA VIVE..." width="550" height="auto">
+                    <br>
+                    <!-- Incorporação do arquivo MP3 do Google Drive -->
+                     <div style="text-align: center;">
+                        <iframe src="https://drive.google.com/file/d/1iQxkIQzEPwlIgtwCsAeSDz7g2v1aKLYe/preview" width="33%" height="80"></iframe>
+                    </div>
+                    <br>
+                    <p>Em boa hora eu me decidi a passar o dia de Natal em uma cidade do interior. O local escolhido foi a cidade de Bonito, na casa de minha amiga Consuelo. Esta minha decisão teve razão de ser... Na verdade, eu estava cansada do reboliço da cidade grande, às vésperas das festas natalinas, com seus engarrafamentos intermináveis; com seus shoppings abarrotados de uma população ansiosa pelas compras de última hora; com os apelos consumistas, via rádio e TV, de uma mídia cada vez mais poderosa e influente, enfim, com o alvoroço característico do período natalino. Por isso resolvi vivenciar uma experiência diferente e, realmente, o resultado foi melhor do que o esperado...</p>
+                    <p>Nas cidades do interior ainda se vive realmente o espírito natalino. A começar pelas praças, igrejas e monumentos feericamente iluminados; o velho parque de diversões “com seus brinquedos” atraindo crianças e adultos, a euforia das famílias a preparar os quitutes da ceia de Natal para receber parentes e amigos, os abraços e os apertos de mãos e os votos de boas festas desejados pessoalmente longe das frias mensagens eletrônicas; a alegria de crianças e adultos vestindo suas melhores roupas para passear nas praças e ruas iluminadas; as badaladas dos sinos da Matriz chamando os fiéis para a Missa do Galo. Tudo isto me fez recordar os natais da minha infância passados na cidade de Bom Jardim...</p>
+                    <p>A nostalgia, a tristeza por constatar que o Natal de hoje não é mais aquele de anos atrás, foi substituída pela alegria de sentir que ainda existem lugares onde se curte o espírito natalino em sua essência e que ainda é possível resgatar a pureza e a autenticidade dos natais de outrora...</p>
+                    <p>Há quanto tempo eu não vivenciava a experiência de sentar em cadeiras na calçada e observar os passantes com suas fisionomias de alegria, de satisfação, de expectativa diante de mais um Natal se aproximando... E quando o grande dia chegou, uma sensação de paz e quietude se apoderou de mim... Neste momento eu fiz um balanço das experiências vividas no ano que finda e firmei alguns propósitos tendo em vista realizar mudanças e criar expectativas positivas para o novo ano...</p>
+                    <p>Eu agradeço a minha amiga Consuelo por seu convite, que me proporcionou uma “pausa” nesta minha vida agitada e tão cheia de solicitações, me impulsionando para um maior crescimento pessoal e possibilitando tirar maior proveito das experiências vividas aqui e agora. Valeu!</p>
+                </div>
+
+                <div id="dia-eleicao" class="content hidden">
+                    <h1>DIA DE ELEIÇÃO...</h1>
+                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQEAE7kyOyR8Gw/feedshare-shrink_800/0/1721213206948?e=1724284800&v=beta&t=fQ5b42raVu60LQG3VwPIoiyppryh9u1EWE_kxEMMbbQ" alt="DIA DE ELEIÇÃO..." width="550" height="auto">
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1nQDRoaNO73sq1ssA2bdVL3-2AHezMQjb/preview"  width="100%" height="70"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1o-VmsR3MfSZW6KndL1Mi368ayAfl-GSw/preview" width="33%" height="80"></iframe>
                     </div>
                     <br>
-                    <p>Eu sou do tempo em que Natal era sinônimo de amor, ternura, amizade, fraternidade, solidariedade...</p>
-                    <p>Eu sou do tempo em que as famílias cristãs se reuniam em torno da mesa para celebrar o nascimento do Menino Jesus, faziam-se preces e orações, recordava-se o caminho de Belém, partilhavam-se as vitualhas e os presentes natalinos só eram entregues na manhã do dia 25, quando se comemorava, verdadeiramente, a data natalícia do Salvador...</p>
-                    <p>Eu sou do tempo em que os pais/avós participavam da 'Ceia de Natal' e, após a oração, faziam uma pequena saudação aos filhos/netos, exaltando o amor, o carinho, o espírito de confraternização que reinava nos lares cristãos e, em seguida, distribuíam os presentes e abraçavam os participantes da festa natalina...</p>
-                    <p>Eu sou do tempo em que crianças e adultos faziam a montagem do presépio e da árvore de Natal, enfeitando a casa com motivos natalinos e escrevendo mensagens de amor e solidariedade para os amigos e parentes distantes...</p>
-                    <p>Eu sou do tempo em que os filhos tinham maior proximidade com os pais e os ouviam, com reverência, contar histórias de Natal, histórias de amor, de fé e de esperança...</p>
-                    <p>Eu sou do tempo em que não havia televisão, computador, internet e as famílias tinham maior convivência, mais proximidade e se sentiam felizes com a partilha dos momentos de paz e de harmonia. De quando a simplicidade da festa estava no coração das pessoas e a alegria se manifestava nos pequenos gestos de carinho e de atenção uns com os outros...</p>
-                    <p>Eu sou do tempo em que as ruas eram decoradas com motivos natalinos e um Papai Noel (voluntário) recebia a criançada, os pais, e se fazia portador de mensagens de amor, de carinho, de esperança...</p>
-                    <p>Eu sou do tempo em que o verdadeiro sentido do Natal era o que nós podíamos dividir com os outros, e não o que nós podíamos comprar nas lojas. De quando presentes, na sua grande maioria, eram confeccionados com a ajuda dos pais, e nos alegrávamos com eles...</p>
-                    <p>Eu sou do tempo em que a figura do Menino Jesus na manjedoura tinha um significado importante na vida de todos nós e a troca de presentes era feita com emoção e alegria e com muita sinceridade...</p>
-                    <p>Eu sou do tempo em que a festa natalina não era celebrada com fogos e barulho e a árvore de Natal era enfeitada com bolas coloridas e luzes pisca-pisca e não com luzes artificiais...</p>
-                    <p>Eu sou do tempo em que nós sentíamos a verdadeira alegria do Natal e não apenas a necessidade de comemorar...</p>
-                    <p>Eu sou do tempo em que as famílias reunidas formavam um círculo de fé e de esperança, sob as bênçãos do Menino Jesus...</p>
-                    <p>Eu sou do tempo em que o 'espírito natalino' nos envolvia e nos trazia paz e alegria...</p>
-                    <p>Eu sou do tempo em que nós tínhamos menos, mas éramos mais felizes...</p>
-                    <p>Eu sou do tempo em que a ceia natalina, mesmo simples, reunia as famílias para a celebração de mais um nascimento de Jesus e para agradecer as bênçãos recebidas no decorrer do ano...</p>
-                    <p>Eu sou do tempo em que o amor, a fé, a fraternidade eram mais importantes que os presentes...</p>
-                    <p>Eu sou do tempo em que a música natalina 'Noite Feliz' tinha um significado especial e tocava fundo nos corações dos cristãos...</p>
-                    <p>Eu sou do tempo em que o Natal tinha um sabor diferente do que tem hoje...</p>
-                    <p>Eu sou do tempo em que Jesus nascia todos os dias e não apenas no dia 25 de dezembro...</p>
-                    <p>Eu sou do tempo em que a amizade, o respeito, o carinho, o amor eram a tônica dos festejos natalinos e se prolongavam durante todo o ano...</p>
-                    <p>Eu sou do tempo em que havia mais simplicidade e mais fraternidade entre as pessoas...</p>
-                    <p>Eu sou do tempo em que ser feliz era estar reunido com a família, em volta da mesa, na festa natalina, e dividir o pão e a paz, e não o que o dinheiro podia comprar...</p>
-                    <p>Eu sou do tempo em que o Natal era, realmente, celebrado com amor e fé nos nossos corações e nas nossas vidas...</p>
-                    <p>E eu sinto muita falta deste tempo que não volta mais...</p>
+                    <p>Hoje, 03 de outubro de 2010, eu me dirijo mais uma vez à sessão eleitoral para votar. Neste momento, dois pensamentos antagônicos invadem a minha mente. Por um lado, eu me sinto uma cidadã consciente que exerce o direito e o dever de votar e, com isso, espera contribuir para a consolidação da democracia do seu país. É a minha consciência cívica que pesa neste momento; é o meu exercício de cidadania...</p>
+                    <p>Por outro lado, eu me sinto tomada por sentimentos diversos: apatia, frieza, indiferença e, por que não dizer, revolta por me sentir "obrigada" a participar de um cenário político desastroso cujos atores principais (os candidatos) há muito deixaram de merecer a nossa credibilidade...</p>
+                    <p>Se nós pararmos um pouco para pensar na realidade atual da política brasileira, nos deparamos com um ambiente contaminado por denúncias de corrupção, tráfico de influências, jogos de interesses e outros, praticados por aqueles que foram por nós "nomeados" para zelar pelos bens públicos e pela preservação de nossas instituições, tendo como produto final, o bem geral da sociedade. A experiência tem mostrado, ano após ano, que a grande preocupação da maioria dos nossos políticos é se dar bem nas eleições para poder usufruir das "benesses" que o exercício do cargo lhes proporciona, esquecendo, por completo, dos propósitos firmados nas campanhas eleitorais. Além disso, o investimento financeiro durante as campanhas é bastante alto e a preocupação principal dos candidatos é garantir a vitória nas urnas para saírem do "prejuízo". Os nossos partidos políticos, em sua grande maioria, estão descaracterizados e sem identidade própria; como colchas de retalhos, alianças são costuradas e descosturadas a cada eleição, numa constante mudança de lado dos seus filiados, participantes que são de um jogo aberto de oportunismo e descompromisso com os ideais partidários.</p>
+                    <p>Que saudade que eu tenho das antigas eleições quando nós acreditávamos nas boas intenções e no comprometimento dos nossos políticos e o dia de eleição tinha um significado todo especial... Quantas vezes eu vesti as cores do meu partido e empunhei a bandeira dos meus candidatos... Era uma época em que, ao contrário de hoje, havia Situação e Oposição como forças claramente delimitadas e nós estávamos convencidos da força e do poder do nosso voto como propulsor das mudanças necessárias. Hoje a situação é outra...</p>
+                    <p>Vale esclarecer, no entanto, que entre os nossos parlamentares ainda existe uma minoria de políticos sérios e responsáveis que não compactuam com esse estado de coisas, mas as suas vozes são envolvidas no redemoinho de interesses corporativos e partidários que caracteriza a atuação política dos nossos homens públicos. Assim, as suas bandeiras de responsabilidade, honestidade, compromisso e transparência não conseguem ser hasteadas.</p>
+                    <p>Diante do cenário político que se nos apresenta, vale perguntar: Qual a função do voto diante deste cenário que funciona como um jogo de cartas marcadas? É possível mudar alguma coisa? Qual o meu papel como eleitor?</p>
+                    <p>Sem encontrar as respostas desejadas, chego finalmente à sessão eleitoral e, para ser coerente com tudo o que penso e defendo, não me resta alternativa a não ser votar em branco, branco este que significa ausência de opção neste momento...</p>
+                    <p>É claro que esta é mais uma eleição... Outras eleições virão, outros candidatos surgirão com novas propostas, novas plataformas políticas e, quem sabe, num futuro próximo este quadro atual se transforme. Vamos torcer para que novas lideranças políticas possam surgir e que tenham vez e voz para aprovar as reformas que o país está a exigir e que consigam "desengavetar" os projetos de interesse da sociedade guardados ano após ano. E, ainda, que o povo brasileiro aprenda a separar o "joio" do "trigo" e seja capaz de lutar por uma sociedade mais justa e igualitária. Só assim garantiremos o tão sonhado desenvolvimento político-econômico-social, cujos primeiros passos já começamos a ensaiar... Aí então, quem sabe, eu volto a sentir o mesmo entusiasmo, a mesma esperança de outras eleições e volto a ostentar as cores do meu partido e a empunhar a bandeira da vitória, comemorando a volta da moralidade à política brasileira... Quem sabe... Vamos esperar para ver...</p>
+                </div>
+
+                <div id="novo-coronavirus" class="content hidden">
+                    <h1>O NOVO CORONAVÍRUS</h1>
+                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQGRuDju2kvIIw/feedshare-shrink_800/0/1721213465336?e=1724284800&v=beta&t=cGEmVL3pptDgZpXDFNscl7A9v0R-rRAle64pPtLI_7I" alt="O NOVO CORONAVÍRUS" width="550" height="auto">
+                    <br>
+                    <!-- Incorporação do arquivo MP3 do Google Drive -->
+                     <div style="text-align: center;">
+                        <iframe src="https://drive.google.com/file/d/197_xsuwMgiOj40Xyw2pNrmZRYwucdqg6/preview" width="33%" height="80"></iframe>
+                    </div>
+                    <br>
+                    <p>Sorrateiramente, sem alarde, atacando a todos universalmente, sem levar em conta idade, classe social, gênero, obrigando todos a se prepararem para lutar contra o minúsculo inimigo.</p>
+                    <p>E assim foi formada uma grande cruzada envolvendo todos os países, desde as grandes metrópoles até os países emergentes e subdesenvolvidos. Todos engajados em uma única missão: fazer frente à fera ansiosa para fazer mais vítimas. E assim os países esqueceram, por um momento, suas divergências políticas e econômicas e se uniram num único objetivo: vencer a pandemia desastrosa que abalou as estruturas da Terra, provocando um desastre econômico e social que mudou radicalmente a maneira de viver das pessoas.</p>
+                    <p>E aí vieram: a quarentena, o isolamento social, a paralisação do comércio, da indústria e dos serviços, obrigando as pessoas a permanecerem em confinamento em suas casas, mudando as relações sociais e afetivas e fazendo surgir demonstrações de solidariedade para com os seus semelhantes até então pouco conhecidas. O que se observou é que os habitantes dos grandes centros urbanos passaram a enxergar os habitantes das periferias e todos se uniram com um único objetivo, lutar com o inimigo comum: a pandemia, afinal, estavam todos no mesmo barco. O resultado de tudo isso é que as pessoas tiveram que lançar mão de recursos até pouco usados e ingressaram no mundo digital para manterem suas relações sociais e familiares mesmo à distância. Além disso, o confinamento, a permanência em casa redefiniu as práticas familiares, fazendo com que as famílias se reinventassem e repensassem com os cônjuges e os filhos, coisa difícil de acontecer anteriormente quando a casa era, na maioria das vezes, o espaço por excelência de passagem e de preparação para as atividades do dia seguinte... Não havia tempo para discutir as relações...</p>
+                    <p>Nós acreditamos que esta pandemia vai passar, mas de uma coisa estamos certos: o mundo jamais será o mesmo, após a passagem do coronavírus por aqui!</p>
+                </div>
+
+                <div id="fragmentos-infancia-feliz-80" class="content hidden">
+                    <h1>FRAGMENTOS DE UMA INFÂNCIA FELIZ<br>(Revisitados aos 80 anos)</h1>
+                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQGKO2BueLnmUA/feedshare-shrink_800/0/1721213256290?e=1724284800&v=beta&t=i6lSc-Q7rgo1cNZXJNP1m3ONiv2dT5y3Ab2hC0EYxcc" alt="FRAGMENTOS DE UMA INFÂNCIA FELIZ (Revisitado aos 80 anos)" width="550" height="auto">
+                    <br>
+                    <!-- Incorporação do arquivo MP3 do Google Drive -->
+                      <div style="text-align: center;">
+                        <iframe src="https://drive.google.com/file/d/1fkMl82MemTgrzWqZNhtrZLf-WzV2-kJP/preview" width="33%" height="80"></iframe>
+                    </div>
+                    <br>
+                    <p>É sempre uma jornada melancólica revisitar os fatos marcantes de minha infância, agora sob a luz do crepúsculo dos meus 80 anos. Essas memórias, outrora vivas e alegres, hoje ecoam em um mundo que mal reconheço - um mundo fragmentado por disputas, isolamento e uma incompreensível hostilidade.</p>
+                    <p>Minha rua, meu universo particular de infância, era um tecido ricamente entrelaçado de parentes e amigos, um lugar onde a discriminação não tinha vez. Meninos e meninas, brancos e negros, filhos de famílias abastadas ou humildes, todos formavam um único grupo unido pela inocência e a alegria pura de viver. Agora, olhando para trás, percebo o quão raro e precioso era aquele senso de comunidade.</p>
+                    <p>As brincadeiras ao ar livre, sob o céu estrelado e na rua de terra batida, parecem agora um sonho distante. Nossos pés descalços sentindo a terra, a alegria simples de estar em contato com a natureza - tudo isso agora é uma lembrança embaçada, em um tempo onde as brincadeiras ao ar livre deram lugar a um mundo virtual, recluso e individualista.</p>
+                    <p>A tranquilidade e paz que reinavam nas nossas ruas, a ausência de violência, a certeza da segurança - tudo isso parece uma utopia perdida. O mundo de hoje, com suas preocupações constantes e sua vigilância perpétua, contrasta dolorosamente com a inocência daquela época. Ah, as árvores frondosas dos nossos quintais! Escalar essas árvores para colher frutas era um prazer indescritível. Hoje, vejo que aqueles espaços livres e abertos foram tragados pela expansão urbana, deixando saudades de um tempo onde a natureza era uma extensão de nossos lares.</p>
+                    <p>Nosso modo de brincar era, sem sabermos, uma academia de ginástica ao ar livre. Corríamos, pulávamos, escalávamos - atividades que, ao olhar agora, parecem ter desaparecido na geração atual, tão absorta em dispositivos eletrônicos e jogos virtuais. As “rodas de conversas”, onde compartilhávamos histórias e aventuras imaginárias, agora parecem um contraste gritante com o mundo atual, onde a comunicação é tão fragmentada e digital. Aquelas histórias, cheias de magia e maravilhas, formavam um forte contraste com a dura realidade que enfrento hoje, um mundo onde a imaginação e a inocência parecem ter se perdido.</p>
+                    <p>Recordo-me com um misto de nostalgia e pesar das brincadeiras coletivas e das peças teatrais ao ar livre que organizávamos. Eram momentos de pura alegria e criatividade. Hoje, percebo que a infância se tornou algo tão diferente, tão abreviada e menos inocente. Ao contrário da minha infância, vivida plenamente e repleta de memórias agradáveis, hoje me encontro em um estado de reflexão sombria. Apesar das experiências adquiridas ao longo dos anos, não me considero feliz no momento. O mundo mudou drasticamente, e muitas vezes me sinto como um estranho, perdido em meio às transformações que não consigo compreender ou aceitar.</p>
+                </div>
+
+                <div id="anexos" class="content hidden">
+                    <h1>ANEXOS</h1>
+                    <h2>Origem do Nome Magali</h2>
+                    <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQGKYeeAishFYg/feedshare-shrink_800/0/1719787997376?e=1722470400&v=beta&t=9iGrn-Tv_hD0vWEcdXKXHcaG2L2fVbCheotaVT_qDSo" alt="Descrição da imagem" width="800" height="auto">
+                    <br>
+                    <p>Meu nome foi escolhido por minha mãe, Maria Auta Borges da Fonseca, que leu um romance de título Magali de autoria de M. Delly. Esse romance foi publicado originalmente em 1929 e integrava uma coleção chamada Biblioteca das Moças que foi lançado no Brasil e traduzido pela Editora Nacional no final da década de 1930, próximo ao meu nascimento. M. Delly é o pseudônimo dos irmãos franceses Jeanne Marie Henriette Petitjean de la Rosiére e Frédéric Petitjean de la Rosiére que juntos foram autores de diversos livros tendo estilo romântico e fantasioso com características de uma literatura “cor de rosa” sendo de bastante sucesso entre os jovens da época. </p>
+                    <p>Esse livro foi adquirido em um sebo paulista e dado de presente por Nilze de Lima, uma senhora amiga, em uma comemoração Natalina na casa de meu irmão, Márcio Borges da Fonseca, na cidade de Atibaia, São Paulo, em dezembro de 1996.</p>
+                    <br>
+                    <h2>Transcrição da Dedicatória</h2>
+                    <p>Distinta amiga Magali:</p>
+                    <p>Ao ter notícia por você que sua mãe havia tirado o seu nome de um romance de M. Delly o qual você não havia lido ainda, empenhei-me em encontrá-lo e tive a felicidade de o encontrar em um lugar de venda de livros usados, pois, nas livrarias não são mais encontrados esses livros tão delicados e que fizeram a alegria de uma mocidade não tão distante da atual. </p>
+                    <p>Espero que você goste da lembrança que tive. Meus votos de Feliz Ano Novo para você e Iolita.</p>
+                </div>
+
+                <div id="galeria-fotos" class="content hidden">
+                    <h1>GALERIA DE FOTOS</h1>
+                    <div class="galeria-container">
+                        <div class="galeria-imagem active">
+                            <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQFPzQu4rIJULg/feedshare-shrink_800/0/1720268556212?e=1723075200&v=beta&t=PFja4ysoOk9SPh4rumNKA9UY1mSh-mIwwCSaFOHT9PU" alt="Imagem 1">
+                            <p>Foto no dia da formatura do curso pedagógico de Magali no Colégio Nossa Senhora do Carmo em 1963. Da esquerda para a direita: Iolita Borges (irmã), Márcio Borges (irmão), Severino Fonseca (pai), Magali Borges, Maria Auta Borges (mãe) e Múcio Borges (irmão)</p>
+                        </div>
+                        <div class="galeria-imagem">
+                            <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQFxVKo6zWsOXQ/feedshare-shrink_800/0/1720268533806?e=1723075200&v=beta&t=OyfZk9Rppvb35LOrGGCskGjSXMqO1CSy1uaWkZckyQE" alt="Imagem 2">
+                            <p>Foto dos quatro irmãos em São Paulo.<br>
+                                Magali Borges, Múcio Borges, Iolita Borges e Márcio Borges </p>
+                        </div>
+                        <div class="galeria-imagem">
+                            <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQGHJIc_-5Qfzg/feedshare-shrink_800/0/1720268681899?e=1723075200&v=beta&t=WA5etDlNSH0K9M92R7RasEqOW88qqqWNAW2oAUN_qYQ" alt="Imagem 3">
+                            <p>Foto de Magali com o diploma na formatura em 1963 recebendo o anel do irmão Múcio Borges (jornalista) sendo também a aluna laureada da turma.</p>
+                        </div>
+                        <div class="galeria-imagem">
+                            <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQFaOcpSnWPl2w/feedshare-shrink_800/0/1720268664428?e=1723075200&v=beta&t=QgkqUHEtcl-uBb94G35K_rRH8NVNy6eoP2aMYTEpp0U" alt="Imagem 4">
+                            <p>Foto no baile de formatura de Magali em 1963 com o irmão Márcio Borges que também se formou em medicina no mesmo ano.</p>
+                        </div>
+                        <div class="galeria-imagem">
+                            <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQF_bSsAebVU_A/feedshare-shrink_2048_1536/0/1720268700034?e=1723075200&v=beta&t=NnT-Ows8y8BdfO2zv1gUItVCQfMtiH0sfCSGeEDdHcI" alt="Imagem 5">
+                            <p>Foto da primeira comunhão de Magali aos 11 anos de idade.</p>
+                        </div>
+                        <div class="galeria-imagem">
+                            <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQG91F8FQNuZhw/feedshare-shrink_2048_1536/0/1720268576922?e=1723075200&v=beta&t=aTUno-zB5u0TYdOsvRbHEiC9MpnzQzCJt4jG7z_ddYc" alt="Imagem 6">
+                            <p>Foto de Magali aos 5 anos de idade.</p>
+                        </div>
+                        <div class="galeria-imagem">
+                            <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQFj_vY5WIUmUg/feedshare-shrink_2048_1536/0/1720268715600?e=1723075200&v=beta&t=FOniF_EXrBiKCph77JyBGX6rMYCIkYQ2DTJMAYCyEUs" alt="Imagem 7">
+                            <p>Foto de Magali com 1 ano de idade em Bom Jardim.</p>
+                        </div>
+                        <div class="seta-container">
+                            <span class="seta-esquerda" onclick="mudarImagem(-1)">&#10094;</span>
+                            <span class="seta-direita" onclick="mudarImagem(1)">&#10095;</span>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
+        <footer class="rodape">
+            <p>&copy; 2024 - Magali Borges da Fonseca.</p>
+        </footer>
     </div>
 
+    <!-- Modal -->
     <div id="myModal" class="modal">
-        <span class="close">&times;</span>
+        <span class="close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="img01">
         <div id="caption"></div>
     </div>
 
     <script>
-        function adjustFontSize(value) {
-            const body = document.body;
-            let fontSize = parseInt(window.getComputedStyle(body, null).getPropertyValue('font-size'));
-            fontSize += value;
-            body.style.fontSize = fontSize + 'px';
+        function showContent(id) {
+            var contents = document.getElementsByClassName('content');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.add('hidden');
+            }
+            document.getElementById(id).classList.remove('hidden');
         }
+
+        var currentIndex = 0;
+
+        function mudarImagem(direcao) {
+            var imagens = document.getElementsByClassName('galeria-imagem');
+            imagens[currentIndex].classList.remove('active');
+            currentIndex += direcao;
+            if (currentIndex >= imagens.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = imagens.length - 1;
+            imagens[currentIndex].classList.add('active');
+        }
+
+        function openModal(imgElement) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+
+            modal.style.display = "block";
+            modalImg.src = imgElement.src;
+            captionText.innerHTML = imgElement.alt;
+
+            if (imgElement.naturalWidth > imgElement.naturalHeight) {
+                modalImg.classList.add('horizontal');
+                modalImg.classList.remove('vertical');
+            } else {
+                modalImg.classList.add('vertical');
+                modalImg.classList.remove('horizontal');
+            }
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        var imagens = document.getElementsByClassName("galeria-img");
+        for (var i = 0; i < imagens.length; i++) {
+            imagens[i].onclick = function () {
+                openModal(this);
+            };
+        }
+
+        var closeBtn = document.getElementsByClassName("close")[0];
+        closeBtn.onclick = function () {
+            closeModal();
+        };
 
         function toggleMenu() {
-            const menu = document.querySelector('.menu-sumario');
-            if (menu.style.display === 'block') {
-                menu.style.display = 'none';
-            } else {
-                menu.style.display = 'block';
+            var menu = document.querySelector('.coluna1');
+            menu.classList.toggle('hidden');
+        }
+
+        document.body.addEventListener('click', function(event) {
+            if (!event.target.closest('.coluna1') && !event.target.closest('.botoes')) {
+                document.querySelector('.coluna1').classList.add('hidden');
             }
-        }
-
-        function showContent(contentId) {
-            const contents = document.querySelectorAll('.content');
-            contents.forEach(content => content.classList.add('hidden'));
-            document.getElementById(contentId).classList.remove('hidden');
-            toggleMenu();
-        }
-
-        const images = document.querySelectorAll('.galeria-img');
-        const modal = document.getElementById('myModal');
-        const modalImg = document.getElementById('img01');
-        const captionText = document.getElementById('caption');
-        const closeModal = document.getElementsByClassName('close')[0];
-
-        images.forEach(image => {
-            image.addEventListener('click', () => {
-                modal.style.display = 'block';
-                modalImg.src = image.src;
-                captionText.innerHTML = image.alt;
-                if (image.width > image.height) {
-                    modalImg.classList.add('horizontal');
-                    modalImg.classList.remove('vertical');
-                } else {
-                    modalImg.classList.add('vertical');
-                    modalImg.classList.remove('horizontal');
-                }
-            });
         });
 
-        closeModal.onclick = function() {
-            modal.style.display = 'none';
+        function alterarTamanhoFonte(factor) {
+            var elements = document.querySelectorAll('.coluna2 p, .coluna2 h1, .coluna2 h2');
+            elements.forEach(function(element) {
+                var currentFontSize = parseInt(window.getComputedStyle(element).fontSize);
+                element.style.fontSize = (currentFontSize + factor) + 'px';
+            });
         }
 
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
+        mudarImagem(0);
     </script>
 </body>
 </html>
