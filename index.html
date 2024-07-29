@@ -49,6 +49,9 @@
         }
 
         .cabecalho {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background-color: #eceff1;
             padding: 6px;
             text-align: center;
@@ -58,21 +61,20 @@
             flex-shrink: 0;
         }
 
-        .cabecalho h1 {
-            font-family: 'Lobster', cursive;
-            font-size: 44px;
-            color: #004d40;
-            margin-bottom: 5px;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+        .cabecalho button {
+            margin: 0 10px;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(to right, #0066cc, #00ccff);
+            color: white;
+            font-size: 18px; /* Aumentei o tamanho da fonte dos botões */
+            cursor: pointer;
+            transition: background 0.3s ease;
         }
 
-        .cabecalho h2 {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 26px;
-            font-weight: normal;
-            color: #00796b;
-            margin-top: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        .cabecalho button:hover {
+            background: linear-gradient(to right, #004080, #0080ff);
         }
 
         .corpo {
@@ -83,19 +85,45 @@
             padding-bottom: 20px;
         }
 
-        .coluna1 {
-            border: 1px solid #4682B4;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
+        .menu-sumario {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background: linear-gradient(to bottom, #0066cc, #00ccff);
+            color: white;
+            display: none;
             flex-direction: column;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            flex: 1;
-            max-width: 250px;
-            margin-right: 15px;
-            font-size: 18px;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            overflow-y: auto; /* Adicionei a barra de rolagem vertical */
+        }
+
+        .menu-sumario ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-sumario ul li {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .menu-sumario ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: block;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-sumario ul li a:hover {
+            background-color: #004080;
         }
 
         .coluna2 {
@@ -106,9 +134,9 @@
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            flex: 4;
+            flex: 1;
             font-size: 20px;
-            overflow-y: auto; /* Adiciona barra de rolagem */
+            overflow-y: auto;
         }
 
         .coluna2 h1, .coluna2 h2 {
@@ -121,14 +149,13 @@
         .coluna2 p {
             text-align: justify;
             margin-bottom: 12px;
-            font-size: 22px;
             line-height: 1.6;
             color: #616161;
             text-indent: 2cm;
         }
 
         .coluna2 img {
-            max-width: 500px; /* Ajusta o tamanho máximo das imagens no texto */
+            max-width: 100%; /* Ajuste no tamanho */
             height: auto;
             display: block;
             margin-left: auto;
@@ -136,122 +163,14 @@
             cursor: pointer;
         }
 
-        .capa-img {
-            max-width: 330px; /* Ajuste conforme necessário */
-            height: auto;
+        .coluna2 .content::after {
+            content: " ";
             display: block;
-            margin-left: auto;
-            margin-right: auto;
-            border: 2px solid #4682B4;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .rodape {
-            background-color: #eceff1;
-            padding: 6px;
-            text-align: center;
-            border: 1px solid #4682B4;
-            font-size: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            flex-shrink: 0;
+            height: 20px; /* Espaço em branco ao final do texto */
         }
 
         .hidden {
             display: none;
-        }
-
-        .coluna1 nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .coluna1 nav ul li {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .coluna1 nav ul li a {
-            text-decoration: none;
-            color: #00796b;
-            font-weight: bold;
-            display: block;
-            padding: 8px;
-            border-radius: 5px;
-            background-color: #eceff1;
-            transition: background-color 0.3s ease;
-            font-size: 18px;
-        }
-
-        .coluna1 nav ul li a:hover {
-            background-color: #b2dfdb;
-        }
-
-        .galeria-container {
-            position: relative;
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        .galeria-imagem {
-            display: none;
-            width: 100%;
-            height: auto;
-        }
-
-        .galeria-imagem img {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: contain;
-            cursor: pointer;
-        }
-
-        .galeria-imagem p {
-            text-align: center;
-            font-size: 20px;
-        }
-
-        .galeria-imagem.active {
-            display: block;
-        }
-
-        .seta-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .seta-esquerda, .seta-direita {
-            cursor: pointer;
-            padding: 10px 20px;
-            color: #00796b;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.3s ease;
-            user-select: none;
-            border: 1px solid #00796b;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.7);
-            display: inline-block;
-            margin: 0 5px;
-        }
-
-        .seta-esquerda:hover, .seta-direita:hover {
-            background-color: #b2dfdb;
-            color: white;
-        }
-
-        #galeria-fotos {
-            overflow-y: auto;
-            flex: 1;
-            padding-right: 15px;
         }
 
         @media screen and (max-width: 600px) {
@@ -259,29 +178,12 @@
                 flex-direction: column;
             }
 
-            .coluna1 {
-                margin-right: 0;
-                margin-bottom: 15px;
-                font-size: 18px;
-            }
-
-            .coluna1 nav ul li a {
-                padding: 12px;
-                font-size: 20px;
-            }
-
-            .coluna2 p {
-                font-size: 22px;
-            }
-
-            .cabecalho, .rodape {
-                margin: 10px;
-                padding: 12px;
-                font-size: 20px;
+            .cabecalho button {
+                font-size: 14px;
+                padding: 4px 8px;
             }
         }
 
-        /* Estilos do modal */
         .modal {
             display: none;
             position: fixed;
@@ -354,40 +256,17 @@
             font-size: 20px;
             height: 150px;
         }
-
-        .botao {
-            font-size: 20px; /* Aumenta o tamanho da fonte dos botões */
-            padding: 8px 12px;
-            margin: 0 10px;
-            border: 1px solid #4682B4;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #eceff1;
-        }
-
-        .botao:hover {
-            background-color: #b2dfdb;
-        }
-
-        .cabecalho .botoes {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header class="cabecalho">            
-            <div class="botoes">
-                <button class="botao" id="aumentar" onclick="alterarTamanhoFonte(1)">A+</button>
-                <button class="botao" id="diminuir" onclick="alterarTamanhoFonte(-1)">A-</button>
-                <button class="botao" id="sumario" onclick="toggleMenu()">Sumário</button>
-            </div>
+        <header class="cabecalho">
+            <button onclick="adjustFontSize(1)">A+</button>
+            <button onclick="adjustFontSize(-1)">A-</button>            
+            <button onclick="toggleMenu()">Sumário</button>
         </header>
         <main class="corpo">
-            <aside class="coluna1">
+            <aside class="menu-sumario">
                 <nav>
                     <ul>
                         <li><a href="#" onclick="showContent('capa')">MEMÓRIAS VÍVIDAS</a></li>
@@ -695,93 +574,76 @@
                 </div>
             </section>
         </main>
-        <footer class="rodape">
-            <p>&copy; 2024 - Magali Borges da Fonseca.</p>
-        </footer>
     </div>
 
-    <!-- Modal -->
     <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="img01">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="imgModal">
         <div id="caption"></div>
     </div>
 
     <script>
-        function showContent(id) {
-            var contents = document.getElementsByClassName('content');
-            for (var i = 0; i < contents.length; i++) {
-                contents[i].classList.add('hidden');
-            }
-            document.getElementById(id).classList.remove('hidden');
+        function adjustFontSize(value) {
+            const body = document.body;
+            let fontSize = parseInt(window.getComputedStyle(body, null).getPropertyValue('font-size'));
+            fontSize += value;
+            body.style.fontSize = fontSize + 'px';
         }
-
-        var currentIndex = 0;
-
-        function mudarImagem(direcao) {
-            var imagens = document.getElementsByClassName('galeria-imagem');
-            imagens[currentIndex].classList.remove('active');
-            currentIndex += direcao;
-            if (currentIndex >= imagens.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = imagens.length - 1;
-            imagens[currentIndex].classList.add('active');
-        }
-
-        function openModal(imgElement) {
-            var modal = document.getElementById("myModal");
-            var modalImg = document.getElementById("img01");
-            var captionText = document.getElementById("caption");
-
-            modal.style.display = "block";
-            modalImg.src = imgElement.src;
-            captionText.innerHTML = imgElement.alt;
-
-            if (imgElement.naturalWidth > imgElement.naturalHeight) {
-                modalImg.classList.add('horizontal');
-                modalImg.classList.remove('vertical');
-            } else {
-                modalImg.classList.add('vertical');
-                modalImg.classList.remove('horizontal');
-            }
-        }
-
-        function closeModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "none";
-        }
-
-        var imagens = document.getElementsByClassName("galeria-img");
-        for (var i = 0; i < imagens.length; i++) {
-            imagens[i].onclick = function () {
-                openModal(this);
-            };
-        }
-
-        var closeBtn = document.getElementsByClassName("close")[0];
-        closeBtn.onclick = function () {
-            closeModal();
-        };
 
         function toggleMenu() {
-            var menu = document.querySelector('.coluna1');
-            menu.classList.toggle('hidden');
+            const menu = document.querySelector('.menu-sumario');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
         }
 
-        document.body.addEventListener('click', function(event) {
-            if (!event.target.closest('.coluna1') && !event.target.closest('.botoes')) {
-                document.querySelector('.coluna1').classList.add('hidden');
+        function showContent(contentId) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.add('hidden'));
+            document.getElementById(contentId).classList.remove('hidden');
+            toggleMenu();
+        }
+
+        document.addEventListener('click', function(event) {
+            const menu = document.querySelector('.menu-sumario');
+            const button = document.querySelector('.cabecalho');
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+                menu.style.display = 'none';
             }
         });
 
-        function alterarTamanhoFonte(factor) {
-            var elements = document.querySelectorAll('.coluna2 p, .coluna2 h1, .coluna2 h2');
-            elements.forEach(function(element) {
-                var currentFontSize = parseInt(window.getComputedStyle(element).fontSize);
-                element.style.fontSize = (currentFontSize + factor) + 'px';
+        const images = document.querySelectorAll('.galeria-img');
+        const modal = document.getElementById('myModal');
+        const modalImg = document.getElementById('imgModal');
+        const captionText = document.getElementById('caption');
+        const closeModal = document.getElementsByClassName('close')[0];
+
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                modal.style.display = 'block';
+                modalImg.src = image.src;
+                captionText.innerHTML = image.alt;
+                if (image.width > image.height) {
+                    modalImg.classList.add('horizontal');
+                    modalImg.classList.remove('vertical');
+                } else {
+                    modalImg.classList.add('vertical');
+                    modalImg.classList.remove('horizontal');
+                }
             });
+        });
+
+        closeModal.onclick = function() {
+            modal.style.display = 'none';
         }
 
-        mudarImagem(0);
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
