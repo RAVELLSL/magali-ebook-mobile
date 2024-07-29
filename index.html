@@ -5,257 +5,259 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memórias Vívidas - Magali Borges da Fonseca</title>
     <style>
-        @font-face {
-            font-family: 'Scripter Serif';
-            src: url('ScripterSerif-Regular.ttf') format('truetype');
-        }
+    @font-face {
+    font-family: 'Scripter Serif';
+    src: url('ScripterSerif-Regular.ttf') format('truetype');
+}
 
-        @font-face {
-            font-family: 'Lobster';
-            src: url('Lobster-Regular.ttf') format('truetype');
-        }
+@font-face {
+    font-family: 'Lobster';
+    src: url('Lobster-Regular.ttf') format('truetype');
+}
 
-        @font-face {
-            font-family: 'Open Sans';
-            src: url('OpenSans-Regular.ttf') format('truetype');
-        }
+@font-face {
+    font-family: 'Open Sans';
+    src: url('OpenSans-Regular.ttf') format('truetype');
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            background: url('https://img.freepik.com/vetores-gratis/vetor-de-design-de-papel-de-carta-marrom-em-branco_53876-175008.jpg') no-repeat center center fixed;
-            background-size: cover;
-            font-size: 18px;
-            color: #333;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
+body {
+    background: url('https://img.freepik.com/vetores-gratis/vetor-de-design-de-papel-de-carta-marrom-em-branco_53876-175008.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-size: 18px;
+    color: #333;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            border: 1px solid #4682B4;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-        }
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid #4682B4;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
 
-        .cabecalho {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #eceff1;
-            padding: 6px;
-            text-align: center;
-            border: 1px solid #4682B4;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            flex-shrink: 0;
-        }
+.cabecalho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eceff1;
+    padding: 6px;
+    text-align: center;
+    border: 1px solid #4682B4;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    flex-shrink: 0;
+}
 
-        .cabecalho button {
-            margin: 0 10px;
-            padding: 6px 12px;
-            border: none;
-            border-radius: 5px;
-            background: linear-gradient(to right, #0066cc, #00ccff);
-            color: white;
-            font-size: 18px; /* Aumentei o tamanho da fonte dos botões */
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+.cabecalho button {
+    margin: 0 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to right, #0066cc, #00ccff);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
 
-        .cabecalho button:hover {
-            background: linear-gradient(to right, #004080, #0080ff);
-        }
+.cabecalho button:hover {
+    background: linear-gradient(to right, #004080, #0080ff);
+}
 
-        .corpo {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
+.corpo {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
-        .menu-sumario {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 250px;
-            height: 100%;
-            background: linear-gradient(to bottom, #0066cc, #00ccff);
-            color: white;
-            display: none;
-            flex-direction: column;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            z-index: 1001;
-            overflow-y: auto; /* Adicionei a barra de rolagem vertical */
-        }
+.menu-sumario {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background: linear-gradient(to bottom, #0066cc, #00ccff);
+    color: white;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    overflow-y: auto;
+}
 
-        .menu-sumario ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+.menu-sumario ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-        .menu-sumario ul li {
-            margin: 10px 0;
-            text-align: center;
-        }
+.menu-sumario ul li {
+    margin: 10px 0;
+    text-align: center;
+}
 
-        .menu-sumario ul li a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            display: block;
-            padding: 8px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+.menu-sumario ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    display: block;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-        .menu-sumario ul li a:hover {
-            background-color: #004080;
-        }
+.menu-sumario ul li a:hover {
+    background-color: #004080;
+}
 
-        .coluna2 {
-            border: 1px solid #4682B4;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            flex: 1;
-            font-size: 20px;
-            overflow-y: auto;
-        }
+.coluna2 {
+    border: 1px solid #4682B4;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    font-size: 20px;
+    overflow-y: auto;
+    text-align: left; /* Alinhamento à esquerda */
+}
 
-        .coluna2 h1, .coluna2 h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 26px;
-            color: #00796b;
-        }
+.coluna2 h1, .coluna2 h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: #00796b;
+}
 
-        .coluna2 p {
-            text-align: justify;
-            margin-bottom: 12px;
-            line-height: 1.6;
-            color: #616161;
-            text-indent: 2cm;
-        }
+.coluna2 p {
+    text-align: justify;
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: #616161;
+    text-indent: 2cm;
+}
 
-        .coluna2 img {
-            max-width: 100%; /* Ajuste no tamanho */
-            height: auto;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            cursor: pointer;
-        }
+.coluna2 img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
 
-        .coluna2 .content::after {
-            content: " ";
-            display: block;
-            height: 20px; /* Espaço em branco ao final do texto */
-        }
+.coluna2 .content::after {
+    content: " ";
+    display: block;
+    height: 20px;
+}
 
-        .hidden {
-            display: none;
-        }
+.hidden {
+    display: none;
+}
 
-        @media screen and (max-width: 600px) {
-            .corpo {
-                flex-direction: column;
-            }
+@media screen and (max-width: 600px) {
+    .corpo {
+        flex-direction: column;
+    }
 
-            .cabecalho button {
-                font-size: 14px;
-                padding: 4px 8px;
-            }
-        }
+    .cabecalho button {
+        font-size: 14px;
+        padding: 4px 8px;
+    }
+}
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            padding-top: 60px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.9);
-        }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+}
 
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 
-        .modal-content.horizontal {
-            width: 100%;
-            height: auto;
-            max-height: 100%;
-        }
+.modal-content.horizontal {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+}
 
-        .modal-content.vertical {
-            width: auto;
-            height: 100%;
-            max-width: 100%;
-        }
+.modal-content.vertical {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+}
 
-        .modal-content, #caption {
-            animation-name: zoom;
-            animation-duration: 0.6s;
-        }
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
 
-        @keyframes zoom {
-            from {transform: scale(0)}
-            to {transform: scale(1)}
-        }
+@keyframes zoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
 
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
 
-        #caption {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-            text-align: center;
-            color: #ccc;
-            padding: 10px 0;
-            font-size: 20px;
-            height: 150px;
-        }
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    font-size: 20px;
+    height: 150px;
+}
+
     </style>
 </head>
 <body>
@@ -297,7 +299,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                    <iframe src="https://drive.google.com/file/d/1agXtQRP3Zq0IKyFpyRv2CahtDaQ8_2Tg/preview" width="33%" height="80"></iframe>
+                    <iframe src="https://drive.google.com/file/d/1agXtQRP3Zq0IKyFpyRv2CahtDaQ8_2Tg/preview" width="100%" height="70"></iframe>
                 </div><br>
                     <p>Diante do mundo que se apresenta para mim, estou meio amedrontada, sem saber como proceder para me sair bem. A rapidez com que tudo acontece me deixa sem condições de acompanhar tudo.</p>
                     <p>Tenho que agradecer às pessoas que contribuíram para que eu me sinta com coragem de enfrentar essa nova vida: os profissionais de saúde - enfermeiros e médicos do Hospital Esperança, onde estive internada por cinco meses, e os que continuam me atendendo em regime domiciliar - fisioterapeuta, psicólogo, massoterapeuta e nutricionista.</p>
@@ -312,7 +314,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1_xoEBSLYOXUxdsYVlSnZ8mQa-6u8mHCl/preview" width="33%" height="80"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1_xoEBSLYOXUxdsYVlSnZ8mQa-6u8mHCl/preview" width="100%" height="70"></iframe>
                     </div><br>
                     <p>Magali Borges da Fonseca, natural de Bom Jardim, Pernambuco, é filha de Severino Fonseca e Maria Auta Borges, e é irmã de Múcio (jornalista), Márcio (médico) e Iolita Borges (psiquiatra e artista plástica). Em 1949, sua família mudou-se para o Recife em busca de melhores condições de vida e oportunidades educacionais para os filhos. Essa mudança marcaria o início de uma trajetória notável.</p>
                     <p>Desde cedo, Magali se destacou em sua vida escolar e acadêmica. No Colégio Nossa Senhora do Carmo, não apenas se sobressaiu em seus estudos, mas também foi laureada no curso pedagógico, o que lhe garantiu uma posição privilegiada como professora na rede estadual de ensino. Sua paixão pela educação a levou à Universidade Federal de Pernambuco, onde se formou em Pedagogia. Mais tarde, especializou-se em Orientação Educacional e Supervisão Escolar pela Universidade Católica de Pernambuco, aprimorando suas habilidades e conhecimento no campo educacional.</p>
@@ -328,7 +330,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1hp7dJscxXmNTOVYcX6l-6nLIFeih81J4/preview" width="33%" height="80"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1hp7dJscxXmNTOVYcX6l-6nLIFeih81J4/preview" width="100%" height="70"></iframe>
                     </div>
                     <br>
                     <p>É sempre bom recordar fatos marcantes vividos durante a nossa infância e que, com certeza, se refletiram na nossa maneira de ser e de agir nos dias de hoje...</p>
@@ -350,7 +352,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1iSAt6nlO6tvnU9skstRetPmvqovmd9CU/preview" width="33%" height="80"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1iSAt6nlO6tvnU9skstRetPmvqovmd9CU/preview" width="100%" height="70"></iframe>
                     </div>
                     <br>
                     <p>Quando eu lembro do meu pai, me vem à mente a figura de um sujeito alegre, bonachão, sempre de bem com a vida e com os outros. Brincalhão, meio irreverente e um tanto debochado, era muito apegado à família e muito orgulhoso dos feitos/sucessos dos seus quatro filhos. Este orgulho não era sem razão, pois para um caminhoneiro, com pouco estudo, conseguir formar 01 jornalista, 02 médicos e 01 professora não foi tarefa fácil... Ao se referir aos filhos, ele dizia com carinho: "Lá em casa são 02 burros pra carga e duas cargas pra burro", mencionando os dois casais de filhos.</p>
@@ -371,7 +373,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                      <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1OLTORycFjMVkIbC2vNom2bIPezO6foWu/preview" width="33%" height="80"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1OLTORycFjMVkIbC2vNom2bIPezO6foWu/preview" width="100%" height="70"></iframe>
                     </div>
                     <br>
                     <p>
@@ -397,7 +399,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                      <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1gLopQGeqOQ8y2ai_7yYo7AN_hpM1gjZ3/preview" width="33%" height="80"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1gLopQGeqOQ8y2ai_7yYo7AN_hpM1gjZ3/preview" width="100%" height="70"></iframe>
                     </div>
                     <br>
                     <p>Há alguns dias, tive o privilégio de assistir a um espetáculo de rara beleza - o pôr-do-sol na Praia do Jacaré, em João Pessoa.</p>
@@ -416,7 +418,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1RGrdPe098EP9fnsoHfp-gRD_eEfk6VOH/preview" width="33%" height="80"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1RGrdPe098EP9fnsoHfp-gRD_eEfk6VOH/preview" width="100%" height="70"></iframe>
                     </div>
                     <br>
                     <p>O programa era “imperdível”. Afinal, a realização de uma série de concertos para comemorar os 200 anos dos compositores Schumann e Chopin, com a participação de musicistas locais e internacionais e totalmente aberta ao público não era para se desprezar…</p>
@@ -435,7 +437,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1RDIeZ-Gjc7EkebfbmB1ptZ2F_8WgOPF2/preview" width="33%" height="80"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1RDIeZ-Gjc7EkebfbmB1ptZ2F_8WgOPF2/preview" width="100%" height="70"></iframe>
                     </div>
                     <br>
                     <p>No dia 06 de Agosto de 1944 nascia na cidade de Bom Jardim, Pernambuco, a pequena Magali, filha do casal Severino e Maria Auta Fonseca...</p>
@@ -459,7 +461,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                      <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1iQxkIQzEPwlIgtwCsAeSDz7g2v1aKLYe/preview" width="33%" height="80"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1iQxkIQzEPwlIgtwCsAeSDz7g2v1aKLYe/preview" width="100%" height="70"></iframe>
                     </div>
                     <br>
                     <p>Em boa hora eu me decidi a passar o dia de Natal em uma cidade do interior. O local escolhido foi a cidade de Bonito, na casa de minha amiga Consuelo. Esta minha decisão teve razão de ser... Na verdade, eu estava cansada do reboliço da cidade grande, às vésperas das festas natalinas, com seus engarrafamentos intermináveis; com seus shoppings abarrotados de uma população ansiosa pelas compras de última hora; com os apelos consumistas, via rádio e TV, de uma mídia cada vez mais poderosa e influente, enfim, com o alvoroço característico do período natalino. Por isso resolvi vivenciar uma experiência diferente e, realmente, o resultado foi melhor do que o esperado...</p>
@@ -475,7 +477,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                     <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1o-VmsR3MfSZW6KndL1Mi368ayAfl-GSw/preview" width="33%" height="80"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1o-VmsR3MfSZW6KndL1Mi368ayAfl-GSw/preview" width="100%" height="70"></iframe>
                     </div>
                     <br>
                     <p>Hoje, 03 de outubro de 2010, eu me dirijo mais uma vez à sessão eleitoral para votar. Neste momento, dois pensamentos antagônicos invadem a minha mente. Por um lado, eu me sinto uma cidadã consciente que exerce o direito e o dever de votar e, com isso, espera contribuir para a consolidação da democracia do seu país. É a minha consciência cívica que pesa neste momento; é o meu exercício de cidadania...</p>
@@ -494,7 +496,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                      <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/197_xsuwMgiOj40Xyw2pNrmZRYwucdqg6/preview" width="33%" height="80"></iframe>
+                        <iframe src="https://drive.google.com/file/d/197_xsuwMgiOj40Xyw2pNrmZRYwucdqg6/preview" width="100%" height="70"></iframe>
                     </div>
                     <br>
                     <p>Sorrateiramente, sem alarde, atacando a todos universalmente, sem levar em conta idade, classe social, gênero, obrigando todos a se prepararem para lutar contra o minúsculo inimigo.</p>
@@ -509,7 +511,7 @@
                     <br>
                     <!-- Incorporação do arquivo MP3 do Google Drive -->
                       <div style="text-align: center;">
-                        <iframe src="https://drive.google.com/file/d/1fkMl82MemTgrzWqZNhtrZLf-WzV2-kJP/preview" width="33%" height="80"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1fkMl82MemTgrzWqZNhtrZLf-WzV2-kJP/preview" width="100%" height="70"></iframe>
                     </div>
                     <br>
                     <p>É sempre uma jornada melancólica revisitar os fatos marcantes de minha infância, agora sob a luz do crepúsculo dos meus 80 anos. Essas memórias, outrora vivas e alegres, hoje ecoam em um mundo que mal reconheço - um mundo fragmentado por disputas, isolamento e uma incompreensível hostilidade.</p>
@@ -584,66 +586,67 @@
 
     <script>
         function adjustFontSize(value) {
-            const body = document.body;
-            let fontSize = parseInt(window.getComputedStyle(body, null).getPropertyValue('font-size'));
-            fontSize += value;
-            body.style.fontSize = fontSize + 'px';
+    const content = document.querySelector('.coluna2');
+    let fontSize = parseInt(window.getComputedStyle(content, null).getPropertyValue('font-size'));
+    fontSize += value;
+    content.style.fontSize = fontSize + 'px';
+}
+
+function toggleMenu() {
+    const menu = document.querySelector('.menu-sumario');
+    if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+    } else {
+        menu.style.display = 'block';
+    }
+}
+
+function showContent(contentId) {
+    const contents = document.querySelectorAll('.content');
+    contents.forEach(content => content.classList.add('hidden'));
+    document.getElementById(contentId).classList.remove('hidden');
+    toggleMenu();
+}
+
+document.addEventListener('click', function(event) {
+    const menu = document.querySelector('.menu-sumario');
+    const button = document.querySelector('.cabecalho');
+    if (!menu.contains(event.target) && !button.contains(event.target)) {
+        menu.style.display = 'none';
+    }
+});
+
+const images = document.querySelectorAll('.galeria-img');
+const modal = document.getElementById('myModal');
+const modalImg = document.getElementById('imgModal');
+const captionText = document.getElementById('caption');
+const closeModal = document.getElementsByClassName('close')[0];
+
+images.forEach(image => {
+    image.addEventListener('click', () => {
+        modal.style.display = 'block';
+        modalImg.src = image.src;
+        captionText.innerHTML = image.alt;
+        if (image.width > image.height) {
+            modalImg.classList.add('horizontal');
+            modalImg.classList.remove('vertical');
+        } else {
+            modalImg.classList.add('vertical');
+            modalImg.classList.remove('horizontal');
         }
+    });
+});
 
-        function toggleMenu() {
-            const menu = document.querySelector('.menu-sumario');
-            if (menu.style.display === 'block') {
-                menu.style.display = 'none';
-            } else {
-                menu.style.display = 'block';
-            }
-        }
+closeModal.onclick = function() {
+    modal.style.display = 'none';
+}
 
-        function showContent(contentId) {
-            const contents = document.querySelectorAll('.content');
-            contents.forEach(content => content.classList.add('hidden'));
-            document.getElementById(contentId).classList.remove('hidden');
-            toggleMenu();
-        }
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
 
-        document.addEventListener('click', function(event) {
-            const menu = document.querySelector('.menu-sumario');
-            const button = document.querySelector('.cabecalho');
-            if (!menu.contains(event.target) && !button.contains(event.target)) {
-                menu.style.display = 'none';
-            }
-        });
-
-        const images = document.querySelectorAll('.galeria-img');
-        const modal = document.getElementById('myModal');
-        const modalImg = document.getElementById('imgModal');
-        const captionText = document.getElementById('caption');
-        const closeModal = document.getElementsByClassName('close')[0];
-
-        images.forEach(image => {
-            image.addEventListener('click', () => {
-                modal.style.display = 'block';
-                modalImg.src = image.src;
-                captionText.innerHTML = image.alt;
-                if (image.width > image.height) {
-                    modalImg.classList.add('horizontal');
-                    modalImg.classList.remove('vertical');
-                } else {
-                    modalImg.classList.add('vertical');
-                    modalImg.classList.remove('horizontal');
-                }
-            });
-        });
-
-        closeModal.onclick = function() {
-            modal.style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
     </script>
 </body>
 </html>
