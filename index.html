@@ -279,6 +279,36 @@ body {
     display: block;
 }
 
+#galeria-fotos {
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 15px;
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Adiciona um espaço abaixo dos botões */
+}
+
+.botao {
+    background: linear-gradient(to right, #2196F3, #21CBF3); /* Degradê de azul */
+    color: white; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    font-size: 16px; /* Tamanho da fonte */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ao redor dos botões */
+    transition: background 0.3s ease; /* Transição suave para o degradê */
+    margin: 0 10px; /* Adiciona espaço horizontal entre os botões */
+}
+
+.botao:hover {
+    background: linear-gradient(to right, #1E88E5, #1EADF5); /* Degradê de azul mais escuro ao passar o mouse */
+}
+
     </style>
 </head>
 <body>
@@ -558,9 +588,13 @@ body {
                 </div>
                 
                 <div id="galeria-fotos" class="content hidden">
-                    <h1>Galeria de Fotos</h1>
-                    <div class="galeria-container">
-                        <div class="galeria-imagem">
+                    <h1>GALERIA DE FOTOS</h1>
+                    <div class="botoes">
+                        <button class="botao" onclick="window.open('https://photos.app.goo.gl/yP9nyDoPBFx5HzZx6', '_blank')">Meu Álbum de Fotos</button>
+                        <button class="botao" onclick="window.open('https://photos.app.goo.gl/uDVMg1NPpdUqFkud7', '_blank')">Galeria de Vídeos</button>
+                    </div>
+    <div class="galeria-container">
+                        <div class="galeria-imagem active">
                             <img class="galeria-img" src="https://media.licdn.com/dms/image/D4E22AQFPzQu4rIJULg/feedshare-shrink_800/0/1720268556212?e=1723075200&v=beta&t=PFja4ysoOk9SPh4rumNKA9UY1mSh-mIwwCSaFOHT9PU" alt="Imagem 1">
                             <p>Foto no dia da formatura do curso pedagógico de Magali no Colégio Nossa Senhora do Carmo em 1963. Da esquerda para a direita: Iolita Borges (irmã), Márcio Borges (irmão), Severino Fonseca (pai), Magali Borges, Maria Auta Borges (mãe) e Múcio Borges (irmão)</p>
                         </div>
